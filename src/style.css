@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  
+        /* Stili per il selettore "toggle-switch" */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #4f46e5;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Stili per le barre di scorrimento su desktop */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Stili per il modale (pop-up) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.visible {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Stili per i messaggi */
+        .message-modal {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+
+.message-modal.show {
+    opacity: 1;
+    visibility: visible;
+    top: 5%;
+}
+
+/* Stili per i tab */
+.tab-button {
+    @apply px-4 py-2 font-semibold border-b-2 -mb-px transition-colors duration-200 ease-in-out;
+}
+
+.dark .tab-button {
+    @apply text-gray-400 hover:text-gray-300 hover:border-gray-500;
+}
+
+/* Animazioni per i pannelli */
+@keyframes slideInFromRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.panel-slide-in-right {
+    animation: slideInFromRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel-slide-in-left {
+    animation: slideInFromLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animazione per il riquadro del risultato */
+@keyframes result-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.result-animate {
+    animation: result-pulse 0.4s ease-in-out;
+}
+
+
+/* 7. Pulsanti per Pesi Predefiniti
+   ========================================================================== */
+.preset-button {
+  @apply bg-gray-200 text-gray-800 text-xs font-semibold py-1 px-3 rounded-full transition-colors duration-200 cursor-pointer hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-500;
+}
+
+/* Stili per il pulsante di unità attivo */
+.active-unit {
+  @apply bg-white dark:bg-gray-900 shadow text-indigo-600 dark:text-indigo-400;
+  @apply hover:bg-white dark:hover:bg-gray-900; /* Sovrascrive l'hover di default */
+}
+
+/* Stili per i pulsanti del modale di esportazione */
+.export-option-btn {
+  @apply flex flex-col items-center justify-center gap-1 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-200 text-center hover:shadow-md hover:scale-105;
+}
+
+
+/* Miglioramenti per un'esperienza più simile a un'app nativa */
+html,
+body {
+  /* Impedisce il "pull-to-refresh" su mobile, un comportamento tipico dei browser */
+  overscroll-behavior-y: contain;
+}
+
+/* Rimuove l'evidenziazione blu/grigia al tocco su mobile (iOS/Android) */
+button,
+a,
+.tab-button,
+.toggle-switch {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Impedisce la selezione del testo su elementi interattivi, come in un'app nativa */
+button, .tab-button, h1, h2, h3, label, .toggle-switch {
+  user-select: none; /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
+      /* Stile per la barra del titolo personalizzata.
+         Questa area diventerà trascinabile quando l'app è installata su desktop. */
+      #title-bar {
+        display: none; /* Nascosta di default */
+        -webkit-app-region: drag; /* Rende l'area trascinabile */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: env(titlebar-area-height, 30px); /* Altezza dinamica per la barra del titolo */
+        z-index: 1000;
+        /* --- ESEMPIO DI PERSONALIZZAZIONE --- */
+        background-color: #f8fafc; /* Colore di sfondo per tema chiaro */
+        align-items: center; /* Centra il contenuto verticalmente */
+        padding: 0 12px; /* Aggiunge padding orizzontale */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 500;
+        color: #334155;
+      }
+
+      /* Stile per il tema scuro, si basa sulla classe .dark aggiunta al tag <html> o <body> */
+      .dark #title-bar {
+          background-color: #1f2937; /* Colore di sfondo per tema scuro */
+          color: #e2e8f0;
+      }
+
+      /* Applica gli stili solo quando la PWA è in modalità overlay */
+      @media (display-mode: window-controls-overlay) {
+        #title-bar {
+          --title-bar-height: env(titlebar-area-height, 30px);
+          display: flex; /* Cambiato in flex per allineare gli elementi interni */
+        }
+        /* Aggiunge padding al body per non sovrapporre il contenuto alla barra del titolo */
+        body {
+          padding-top: var(--title-bar-height);
+        }
+        #appContainer {
+          height: calc(100vh - var(--title-bar-height));
+        }
+      }
