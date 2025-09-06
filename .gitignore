@@ -1,4 +1,4 @@
- # Dependencies
+# Dependencies
  /node_modules
  
  # Build output
@@ -15,3 +15,6 @@
  .idea
  .vscode
 node_modules
+
+# Firebase cache
+.firebase/
