@@ -252,3 +252,4 @@ button, .tab-button, h1, h2, h3, label, .toggle-switch {
       .animate-fade-in-up {
         animation: fade-in-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
       }
+
