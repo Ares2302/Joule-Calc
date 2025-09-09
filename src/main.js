@@ -54,11 +54,12 @@ function aggiornaRisultatoMOA(elevation, windage, params) {
 
 // --- Funzioni Comuni --- //
 
-const mostraModaleConHistory = (modalElement) => {
+const mostraModaleConHistory = (modalElement, onBeforeShow) => {
     if (!modalElement || activeModal) return;
+    if (onBeforeShow) onBeforeShow(); // Esegui la funzione per popolare il modale
     mostraModale(modalElement);
     activeModal = modalElement;
-    history.pushState({ modalOpen: true, modalId: modalElement.id }, '');
+    history.pushState({ modalOpen: true, modalId: modalElement.id }, '', `#${modalElement.id}`);
 };
 
 const nascondiModaleConHistory = (modalElement, fromPopState = false) => {
@@ -66,7 +67,7 @@ const nascondiModaleConHistory = (modalElement, fromPopState = false) => {
     nascondiModale(modalElement);
     activeModal = null;
     if (!fromPopState && history.state && history.state.modalOpen) {
-        history.back();
+        history.go(-1); // Usa go(-1) per essere più esplicito
     }
 };
 
@@ -107,6 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('appContainer')) { // Esegui solo se siamo nella pagina della calcolatrice
         initMainApp();
     }
+
+    // Gestione del pulsante "indietro" del browser per i modali
+    window.addEventListener('popstate', (event) => {
+        // Controlla se il menu è aperto e chiudilo se necessario
+        if (!DOM.sideMenu.classList.contains('translate-x-full')) {
+            toggleMenu(false, true); // Chiudi senza modificare la history
+        } else if (activeModal) {
+            // Se c'è un modale attivo, lo chiudiamo senza alterare di nuovo la history
+            nascondiModaleConHistory(activeModal, true);
+        } else if (event.state && event.state.modalId) {
+            // Caso di fallback se activeModal non è sincronizzato
+            const modalToClose = document.getElementById(event.state.modalId);
+            if (modalToClose) nascondiModaleConHistory(modalToClose, true);
+        } else if (event.state && event.state.menuOpen) {
+            // Fallback per il menu, sebbene il controllo della classe sia più affidabile
+            toggleMenu(false, true);
+        }
+    });
 });
 
 // --- Funzione di Inizializzazione per l'App Principale ---
@@ -123,13 +142,14 @@ function initMainApp() {
         // Gestione pulsanti di aiuto
         const helpTopic = button.dataset.helpTopic;
         if (helpTopic) {
-            showHelpModal(helpTopic);
+            vibrate();
+            mostraModaleConHistory(DOM.sectionHelpModal, () => showHelpModal(helpTopic)); // Ora funziona correttamente
         }
 
         // Gestione Menu
         const id = button.id;
 
-        if (id === 'infoBtn') { mostraModaleConHistory(DOM.infoModal); return; }
+        if (id === 'infoBtn') { vibrate(); mostraModaleConHistory(DOM.infoModal); return; }
         if (id === 'closeInfoModalBtn') { nascondiModaleConHistory(DOM.infoModal); return; }
         if (id === 'confirmYesBtn') {
             vibrate(20);
@@ -146,6 +166,7 @@ function initMainApp() {
             return;
         }
         if (id === 'closeSectionHelpModalBtn') {
+            vibrate();
             nascondiModaleConHistory(DOM.sectionHelpModal);
             return;
         }
@@ -166,11 +187,13 @@ function initMainApp() {
         }
 
         if (id === 'menu-btn') {
+            vibrate();
             toggleMenu(true);
             return;
         }
 
         if (id === 'close-menu-btn') {
+            vibrate();
             toggleMenu(false);
             return;
         }
@@ -184,7 +207,7 @@ function initMainApp() {
         if (id === 'shareHistoryBtn' || id === 'shareBtnModal') { vibrate(); condividiStorico(); return; }
         if (id === 'exportBtn') { vibrate(); mostraModaleConHistory(DOM.exportModal); return; }
         if (id === 'openHistoryModalBtn') {
-            aggiornaStorico(DOM.fullHistoryContent, undefined, false);
+            vibrate();
             mostraModaleConHistory(DOM.historyModal);
             return;
         }
@@ -192,7 +215,7 @@ function initMainApp() {
 
     // Chiudi menu cliccando sull'overlay
     if (DOM.menuOverlay) {
-        DOM.menuOverlay.addEventListener('click', () => toggleMenu(false));
+        DOM.menuOverlay.addEventListener('click', () => { vibrate(); toggleMenu(false); });
     }
 
     caricaStorico();
@@ -259,6 +282,7 @@ function initMainApp() {
         DOM.closeInstallBannerBtn.addEventListener('click', () => {
             vibrate();
             DOM.installBanner.classList.add('hidden');
+            // Salva il timestamp solo quando l'utente chiude attivamente il banner
             localStorage.setItem('joule-calc-install-banner-dismissed-timestamp', Date.now().toString());
             if (DOM.installAppBtn.classList.contains('hidden')) {
                 DOM.installAppBtn.classList.remove('hidden');
@@ -386,8 +410,9 @@ function initMainApp() {
     if (DOM.exportModal) {
         const exportModal = document.getElementById('exportModal');
         if (exportModal) {
-            exportModal.addEventListener('click', (e) => {
-                if (e.target.id === 'closeExportModalBtn' || e.target.closest('#closeExportModalBtn')) nascondiModaleConHistory(exportModal);
+            exportModal.addEventListener('click', (e) => { 
+                const target = e.target;
+                if (target.id === 'closeExportModalBtn' || target.closest('#closeExportModalBtn')) { vibrate(); nascondiModaleConHistory(exportModal); }
                 if (e.target.id === 'exportCsvBtnModal' || e.target.closest('#exportCsvBtnModal')) { vibrate(); esportaStoricoCSV(); }
                 if (e.target.id === 'exportTxtBtnModal' || e.target.closest('#exportTxtBtnModal')) { vibrate(); copiaTesto(generaTestoCondivisione(), 'Storico copiato negli appunti!'); }
                 if (e.target.id === 'printBtnModal' || e.target.closest('#printBtnModal')) { vibrate(); stampaStorico(); }
@@ -398,7 +423,7 @@ function initMainApp() {
     if (DOM.historyModal) {
         const closeHistoryModalBtnX = document.getElementById('closeHistoryModalXBtn');
         if (closeHistoryModalBtnX) {
-            closeHistoryModalBtnX.addEventListener('click', () => nascondiModaleConHistory(DOM.historyModal));
+            closeHistoryModalBtnX.addEventListener('click', () => { vibrate(); nascondiModaleConHistory(DOM.historyModal); });
         }
     }
 
@@ -417,17 +442,23 @@ function initMainApp() {
     handleLaunchParams();
 }
 
-function toggleMenu(open) {
+function toggleMenu(open, fromPopState = false) {
     const menu = DOM.sideMenu;
     const overlay = DOM.menuOverlay;
 
     if (!menu || !overlay) return;
 
     if (open) {
+        if (!fromPopState) {
+            history.pushState({ menuOpen: true }, '');
+        }
         overlay.classList.remove('hidden');
         menu.classList.remove('translate-x-full');
     } else {
-        overlay.classList.add('hidden');
+        if (!fromPopState && history.state && history.state.menuOpen) {
+            history.back();
+        }
+        overlay.classList.add('hidden'); // Nascondi comunque l'overlay
         menu.classList.add('translate-x-full');
     }
 }

@@ -62,6 +62,7 @@ export const htmlElement = document.documentElement;
 // Elementi del menu
 export const menuBtn = document.getElementById('menu-btn');
 export const sideMenu = document.getElementById('side-menu');
+export const closeMenuBtn = document.getElementById('close-menu-btn');
 export const menuOverlay = document.getElementById('menu-overlay');
 
 // PWA Install elements
