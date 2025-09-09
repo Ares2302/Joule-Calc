@@ -1,0 +1,41 @@
+/* Stili per la pagina indice delle guide */
+.guide-card {
+    @apply block bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-transform duration-300 ease-in-out;
+}
+
+.guide-card:hover {
+    @apply transform -translate-y-1 shadow-xl;
+}
+
+.guide-card-content .read-more {
+    @apply text-indigo-500 dark:text-indigo-400 font-semibold mt-4 inline-block transition-colors duration-200;
+}
+
+.guide-card:hover .read-more {
+    @apply text-indigo-600 dark:text-indigo-300;
+}
+
+/* Stili per gli articoli (prose) */
+.prose h1, .prose h2, .prose h3 {
+    @apply text-gray-800 dark:text-white font-bold;
+}
+
+.prose p, .prose ul, .prose ol, .prose blockquote {
+    @apply text-gray-700 dark:text-gray-300;
+}
+
+.prose a {
+    @apply text-indigo-600 dark:text-indigo-400 hover:underline;
+}
+
+.prose strong {
+    @apply text-gray-800 dark:text-gray-200;
+}
+
+.prose blockquote {
+    @apply border-l-4 border-indigo-500 pl-4 italic my-6;
+}
+
+.prose .lead {
+    @apply text-xl text-gray-600 dark:text-gray-400;
+}
