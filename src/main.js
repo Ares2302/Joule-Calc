@@ -323,6 +323,9 @@ function initMainApp() {
             playClickSound();
             aggiornaRisultatoMOA(elevation, windage, params);
         } catch (error) {
+            // In caso di errore, resetta i riquadri allo stato iniziale
+            DOM.risultatoAlzoDiv.innerHTML = '<p class="font-semibold mb-1">Verticale</p><p class="text-sm text-gray-600 dark:text-gray-400">Nessuna correzione</p>';
+            DOM.risultatoDerivaDiv.innerHTML = '<p class="font-semibold mb-1">Orizzontale</p><p class="text-sm text-gray-600 dark:text-gray-400">Nessuna correzione</p>';
             mostraMessaggio('Dati non validi!', false);
         }
     };
@@ -336,7 +339,7 @@ function initMainApp() {
         handleEnterKey(DOM.targetJouleInput, DOM.reversePesoInput);
         handleEnterKey(DOM.reversePesoInput, handleCalculateVelocity);
     }
-    if (DOM.moaDistanceInput && DOM.moaDropInput && DOM.moaDriftInput && DOM.calcolaMoaBtn) {
+    if (DOM.moaDistanceInput && DOM.moaDropInput && DOM.moaDriftInput && DOM.calcolaMoaBtn) { // Aggiunto controllo per calcolaMoaBtn
         handleEnterKey(DOM.moaDistanceInput, DOM.moaDropInput);
         handleEnterKey(DOM.moaDropInput, DOM.moaDriftInput);
         handleEnterKey(DOM.moaDriftInput, handleCalculateMOA);

@@ -32,3 +32,26 @@ document.querySelectorAll('#theme-switcher').forEach(button => {
 
 // Applica il tema al caricamento iniziale della pagina
 applyTheme(getTheme());
+
+/**
+ * Gestisce l'apertura e la chiusura del menu laterale.
+ */
+function toggleMenu(open) {
+    const menu = document.getElementById('side-menu');
+    const overlay = document.getElementById('menu-overlay');
+
+    if (!menu || !overlay) return;
+
+    if (open) {
+        overlay.classList.remove('hidden');
+        menu.classList.remove('translate-x-full');
+    } else {
+        overlay.classList.add('hidden');
+        menu.classList.add('translate-x-full');
+    }
+}
+
+// Listener per i pulsanti del menu
+document.getElementById('menu-btn')?.addEventListener('click', () => toggleMenu(true));
+document.getElementById('close-menu-btn')?.addEventListener('click', () => toggleMenu(false));
+document.getElementById('menu-overlay')?.addEventListener('click', () => toggleMenu(false));

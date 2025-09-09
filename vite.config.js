@@ -37,6 +37,9 @@ export default defineConfig({
         guides: resolve(__dirname, 'guides.html'),
         'guida-introduttiva': resolve(__dirname, 'guides/guida-introduttiva.html'),
         'scegliere-pallini': resolve(__dirname, 'guides/scegliere-pallini.html'),
+        'regolare-ottica': resolve(__dirname, 'guides/regolare-ottica.html'),
+        'guida-hop-up': resolve(__dirname, 'guides/guida-hop-up.html'),
+        glossary: resolve(__dirname, 'glossary.html'),
       },
       
     },

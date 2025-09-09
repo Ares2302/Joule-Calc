@@ -6,6 +6,8 @@ export const handleEnterKey = (currentInput, nextElementOrAction) => {
         if (event.key === 'Enter') {
             event.preventDefault();
             if (typeof nextElementOrAction === 'function') {
+                // Rimuove il focus dall'input corrente per nascondere la tastiera su mobile
+                currentInput.blur(); 
                 nextElementOrAction();
             } else if (nextElementOrAction) {
                 nextElementOrAction.focus();
