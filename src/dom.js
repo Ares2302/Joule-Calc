@@ -20,6 +20,7 @@ export const historyModal = document.getElementById('historyModal'); //
 export const copyAllHistoryBtn = document.getElementById('copyAllHistoryBtn');
 export const fullHistoryContent = document.getElementById('fullHistoryContent');
 export const infoModal = document.getElementById('infoModal');
+export const exportModal = document.getElementById('exportModal');
 export const messageModal = document.getElementById('messageModal');
 export const modalMessageSpan = document.getElementById('modalMessage');
 export const confirmationModal = document.getElementById('confirmationModal');

@@ -1,9 +1,9 @@
 import './style.css';
 import './fonts.css';
 import './snap-scroll.css';
-import clickSound from '/sounds/click.mp3'; // Importa il file audio
+import clickSound from '/sounds/click.mp3';
 import * as DOM from './dom.js';
-import { handleEnterKey, esportaStoricoCSV, generaTestoCondivisione, copiaTesto, condividiStorico, stampaStorico } from './utils.js';
+import { handleEnterKey, esportaStoricoCSV, generaTestoCondivisione, condividiStorico, stampaStorico } from './utils.js';
 import {
   isStoricoFull,
   addCalcoloToStorico,
@@ -14,10 +14,10 @@ import {
   eliminaGruppoRisultati,
   copiaGruppoTesto,
 } from './modules/history.js';
-let activeModal = null; // Variabile globale per tracciare il modale attivo
+let activeModal = null;
 import {
   mostraMessaggio,
-  mostraModale, 
+  mostraModale,
   nascondiModale,
   getPendingAction, clearPendingAction,
   setTabStyles as originalSwitchTab,
@@ -26,6 +26,7 @@ import {
   getTheme,
   aggiornaOpzioniClick,
   showHelpModal,
+  copiaTesto,
 } from './modules/ui.js';
 import { calculateJoule, calculateInverseVelocity, calculateMOA } from './modules/calculators.js';
 
@@ -155,7 +156,7 @@ function initMainApp() {
         if (id === 'calcolaVelocitaBtn') { handleCalculateVelocity(); return; }
         if (id === 'calcolaMoaBtn') { handleCalculateMOA(); return; }
         if (id === 'clearHistoryBtn' || id === 'clearAllHistoryBtn') { vibrate(20); cancellaStorico(); return; }
-        if (id === 'copyHistoryBtn' || id === 'copyAllHistoryBtn' || id === 'exportTxtBtnModal') { vibrate(); copiaTesto(generaTestoCondivisione()); return; }
+        if (id === 'copyHistoryBtn' || id === 'copyAllHistoryBtn' || id === 'exportTxtBtnModal') { vibrate(); copiaTesto(generaTestoCondivisione(), 'Storico copiato negli appunti!'); return; }
         if (id === 'shareHistoryBtn' || id === 'shareBtnModal') { vibrate(); condividiStorico(); return; }
         if (id === 'exportBtn') { vibrate(); mostraModaleConHistory(DOM.exportModal); return; }
         if (id === 'openHistoryModalBtn') {
@@ -356,7 +357,7 @@ function initMainApp() {
             exportModal.addEventListener('click', (e) => {
                 if (e.target.id === 'closeExportModalBtn' || e.target.closest('#closeExportModalBtn')) nascondiModaleConHistory(exportModal);
                 if (e.target.id === 'exportCsvBtnModal' || e.target.closest('#exportCsvBtnModal')) { vibrate(); esportaStoricoCSV(); }
-                if (e.target.id === 'exportTxtBtnModal' || e.target.closest('#exportTxtBtnModal')) { vibrate(); copiaTesto(generaTestoCondivisione()); }
+                if (e.target.id === 'exportTxtBtnModal' || e.target.closest('#exportTxtBtnModal')) { vibrate(); copiaTesto(generaTestoCondivisione(), 'Storico copiato negli appunti!'); }
                 if (e.target.id === 'printBtnModal' || e.target.closest('#printBtnModal')) { vibrate(); stampaStorico(); }
                 if (e.target.id === 'shareBtnModal' || e.target.closest('#shareBtnModal')) { vibrate(); condividiStorico(); }
             });
