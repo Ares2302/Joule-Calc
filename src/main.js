@@ -120,6 +120,12 @@ function initMainApp() {
         const button = target.closest('button');
         if (!button) return;
 
+        // Gestione pulsanti di aiuto
+        const helpTopic = button.dataset.helpTopic;
+        if (helpTopic) {
+            showHelpModal(helpTopic);
+        }
+
         // Gestione Menu
         const id = button.id;
 
@@ -139,9 +145,33 @@ function initMainApp() {
             clearPendingAction();
             return;
         }
+        if (id === 'closeSectionHelpModalBtn') {
+            nascondiModaleConHistory(DOM.sectionHelpModal);
+            return;
+        }
+
+        if (id === 'confirmYesBtn') {
+            vibrate(20);
+            nascondiModale(DOM.confirmationModal);
+            const action = getPendingAction();
+            if (action) action();
+            clearPendingAction();
+            return;
+        }
+        if (id === 'confirmNoBtn') {
+            vibrate();
+            nascondiModale(DOM.confirmationModal);
+            clearPendingAction();
+            return;
+        }
 
         if (id === 'menu-btn') {
             toggleMenu(true);
+            return;
+        }
+
+        if (id === 'close-menu-btn') {
+            toggleMenu(false);
             return;
         }
 
@@ -387,14 +417,15 @@ function initMainApp() {
 function toggleMenu(open) {
     const menu = DOM.sideMenu;
     const overlay = DOM.menuOverlay;
+
     if (!menu || !overlay) return;
 
     if (open) {
         overlay.classList.remove('hidden');
-        menu.classList.remove('-translate-x-full');
+        menu.classList.remove('translate-x-full');
     } else {
         overlay.classList.add('hidden');
-        menu.classList.add('-translate-x-full');
+        menu.classList.add('translate-x-full');
     }
 }
 
