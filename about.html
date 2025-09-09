@@ -99,6 +99,36 @@
 
                 <hr class="my-8 border-gray-300 dark:border-gray-600">
 
+                <!-- Dati Strutturati per le FAQ -->
+                <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": [{
+                    "@type": "Question",
+                    "name": "L'app funziona offline?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Sì! Joule-Calc è una Progressive Web App (PWA). Dopo la prima visita, puoi usarla anche senza connessione a internet. Per un'esperienza ottimale, puoi installarla sul tuo dispositivo tramite il pulsante di installazione che appare nell'app."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "I miei dati sono al sicuro?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Assolutamente. Tutti i tuoi calcoli e le tue preferenze sono salvati esclusivamente sul tuo dispositivo (nel Local Storage del browser). Nessun dato personale o di calcolo viene inviato o memorizzato sui nostri server. Per maggiori dettagli, consulta la nostra Privacy Policy."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "A cosa serve la sezione Compensa Ottica?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Questa sezione ti aiuta a regolare la tua ottica (cannocchiale). Inserendo la distanza del bersaglio e di quanto il tuo colpo si è spostato (in cm), il calcolatore ti dirà di quanti 'click' devi ruotare le torrette di alzo e deriva (in MOA o MRAD) per centrare il bersaglio."
+                    }
+                  }]
+                }
+                </script>
+
                 <h2>Domande Frequenti (FAQ)</h2>
 
                 <h3>L'app funziona offline?</h3>
