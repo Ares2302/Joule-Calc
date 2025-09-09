@@ -63,3 +63,17 @@ export const htmlElement = document.documentElement;
 export const menuBtn = document.getElementById('menu-btn');
 export const sideMenu = document.getElementById('side-menu');
 export const menuOverlay = document.getElementById('menu-overlay');
+
+// PWA Install elements
+export const installAppBtn = document.getElementById('installAppBtn');
+export const installBanner = document.getElementById('install-banner');
+export const installAppBtnBanner = document.getElementById('installAppBtnBanner');
+export const closeInstallBannerBtn = document.getElementById('closeInstallBannerBtn');
+
+// Snap scroll sections and buttons
+export const calculatorSection = document.getElementById('calculator-section');
+export const historySection = document.getElementById('history-section');
+export const scrollToHistoryBtn = document.getElementById('scroll-to-history-btn');
+export const scrollToCalculatorBtn = document.getElementById('scroll-to-calculator-btn');
+export const historyScrollContainer = document.getElementById('history-scroll-container');
+export const scrollToHistoryTopBtn = document.getElementById('scrollToHistoryTopBtn');

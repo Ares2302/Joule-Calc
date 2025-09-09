@@ -3,59 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Siamo - Joule-Calc</title>
-    <meta name="theme-color" content="#ffffff">
-  <script type="module" crossorigin src="/assets/main-BKMZgaDw.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-BPu6J4Im.css">
-<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans">
+    <title>Chi Siamo - La Missione di Joule-Calc</title>
+    
+    <!-- Metadati SEO -->
+    <meta name="description" content="Scopri la storia e la missione di Joule-Calc, lo strumento creato da un appassionato per gli appassionati di softair e aria compressa.">
+    <meta name="keywords" content="chi siamo, joule-calc, missione, softair, aria compressa, pwa, calcolatore joule">
+    
+    <!-- Metadati per la condivisione sui social (Open Graph) -->
+    <meta property="og:title" content="Chi Siamo - La Missione di Joule-Calc">
+    <meta property="og:description" content="Scopri la storia e la missione di Joule-Calc, lo strumento creato da un appassionato per gli appassionati di softair e aria compressa.">
+    <meta property="og:url" content="https://joule-calc.web.app/about.html">
+    <link rel="canonical" href="https://joule-calc.web.app/about.html">
+    
 
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
+    <!-- Favicon e manifest per PWA -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#ffffff">
+  <script type="module" crossorigin src="/assets/fonts-BjYO01QJ.js"></script>
+  <script type="module" crossorigin src="/assets/theme-loader-kx7WDRaO.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/fonts-BsJLKPdt.css">
+  <link rel="stylesheet" crossorigin href="/assets/theme-loader-D8885kn1.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center">
+
+    <!-- Barra del titolo personalizzata per la PWA Desktop -->
+    <div id="title-bar">
+        <img src="/logo-96x96.png" alt="Logo" style="width: 20px; height: 20px; -webkit-app-region: no-drag; margin-right: 8px;">
+        <span style="-webkit-app-region: no-drag; font-size: 13px; font-weight: 600;">Joule-Calc</span>
+        <span id="title-bar-tab-name" style="-webkit-app-region: no-drag; font-size: 13px; margin-left: 8px; opacity: 0.7;"></span>
+    </div>
+
+    <!-- Menu a comparsa -->
+    <div id="side-menu" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl z-[1100] transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Menu</h2>
+                <button id="close-menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Chiudi menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2">
+                <a href="/guides.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Guide</a>
+                <a href="/glossary.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Glossario</a>
+                <a href="/about.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Chi Siamo</a>
+                <a href="/contact.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Contatti</a>
+                <a href="/privacy.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Privacy</a>
+            </nav>
+        </div>
+    </div>
+    <!-- Overlay per il menu -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[1050] hidden"></div>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 lg:max-w-6xl animate-fade-in-up w-full">
         
         <header class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white">Chi Siamo</h1>
-            <div>
-                <a href="/guides.html" class="text-indigo-600 dark:text-indigo-400 hover:underline mr-4">Guide</a>
-                <a href="/" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">
-                    &larr; Torna al Calcolatore
+            <a href="/" class="flex items-center gap-4 group" aria-label="Torna alla homepage di Joule-Calc">
+                <img src="/icon-192.png" alt="Logo di Joule-Calc" class="w-12 h-12 rounded-lg transition-transform duration-300 group-hover:scale-105" width="48" height="48">
+                <span class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Joule-Calc</span>
+            </a>
+            <div class="flex items-center gap-1 sm:gap-2">
+                <!-- Pulsante Torna al Calcolatore -->
+                <a href="/" class="flex flex-col items-center p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200" aria-label="Torna al Calcolatore">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                    </svg>
+                    <span class="text-xs font-semibold">Calcolatore</span>
                 </a>
+                <!-- Pulsante di installazione (nascosto di default) -->
+                <button id="installAppBtn" class="hidden p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-opacity duration-300 ease-in-out" aria-label="Installa App">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </button>
+                <!-- Theme switcher -->
+                <button id="theme-switcher" class="cursor-pointer p-2 rounded-full transition-transform active:animate-pulse-subtle" aria-label="Cambia tema">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                <!-- Pulsante Hamburger Menu -->
+                <button id="menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-label="Apri menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
             </div>
         </header>
 
-        <main class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 lg:p-10">
-            <div class="prose prose-lg dark:prose-invert max-w-none">
-                
+        <main class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 lg:p-10">
+            <article class="prose prose-lg dark:prose-invert max-w-none">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">Chi Siamo</h1>
                 <p class="lead">Benvenuto su Joule-Calc, il tuo strumento per tenere d'occhio le variazioni delle tue armi di softair, aria compressa. ecc...</p>
-                
                 <h2>La Nostra Missione</h2>
                 <p>La nostra missione è fornire agli appassionati, dai neofiti ai più esperti, uno strumento preciso, affidabile e facile da usare per calcoli fondamentali come l'energia del colpo (Joule), la velocità e la compensazione dell'ottica.</p>
-
                 <h2>Perché Joule-Calc?</h2>
                 <p>Joule-Calc è nato dalla necessità di avere un calcolatore all-in-one che non fosse solo funzionale, ma anche moderno,piacevole e veloce da usare. Ho sviluppato questa Progressive Web App (PWA) con le tecnologie più recenti per garantire un'esperienza veloce e accessibile da qualsiasi dispositivo, specialmente offline.</p>
-                
                 <h2>Chi sono</h2>
                 <p>Mi chiamo Alessandro, appassionato di armi ad aria compressa e mi diletto nello sviluppo web. Ho unito le mie due passioni per creare questo progetto. Il mio obiettivo è continuare a migliorare Joule-Calc con nuove funzionalità, ascoltando i feedback della community.</p>
                 <p>Grazie per aver scelto Joule-Calc!</p>
 
-            </div>
+                <hr class="my-8 border-gray-300 dark:border-gray-600">
+
+                <!-- Dati Strutturati per le FAQ -->
+                <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": [{
+                    "@type": "Question",
+                    "name": "L'app funziona offline?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Sì! Joule-Calc è una Progressive Web App (PWA). Dopo la prima visita, puoi usarla anche senza connessione a internet. Per un'esperienza ottimale, puoi installarla sul tuo dispositivo tramite il pulsante di installazione che appare nell'app."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "I miei dati sono al sicuro?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Assolutamente. Tutti i tuoi calcoli e le tue preferenze sono salvati esclusivamente sul tuo dispositivo (nel Local Storage del browser). Nessun dato personale o di calcolo viene inviato o memorizzato sui nostri server. Per maggiori dettagli, consulta la nostra Privacy Policy."
+                    }
+                  }, {
+                    "@type": "Question",
+                    "name": "A cosa serve la sezione Compensa Ottica?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Questa sezione ti aiuta a regolare la tua ottica (cannocchiale). Inserendo la distanza del bersaglio e di quanto il tuo colpo si è spostato (in cm), il calcolatore ti dirà di quanti 'click' devi ruotare le torrette di alzo e deriva (in MOA o MRAD) per centrare il bersaglio."
+                    }
+                  }]
+                }
+                </script>
+
+                <h2>Domande Frequenti (FAQ)</h2>
+
+                <h3>L'app funziona offline?</h3>
+                <p>Sì! Joule-Calc è una Progressive Web App (PWA). Dopo la prima visita, puoi usarla anche senza connessione a internet. Per un'esperienza ottimale, puoi installarla sul tuo dispositivo tramite il pulsante di installazione che appare nell'app.</p>
+
+                <h3>I miei dati sono al sicuro?</h3>
+                <p>Assolutamente. Tutti i tuoi calcoli e le tue preferenze sono salvati esclusivamente sul tuo dispositivo (nel Local Storage del browser). Nessun dato personale o di calcolo viene inviato o memorizzato sui nostri server. Per maggiori dettagli, consulta la nostra <a href="/privacy.html">Privacy Policy</a>.</p>
+
+                <h3>Posso usare Joule-Calc per armi da fuoco?</h3>
+                <p>Sebbene la formula fisica per calcolare l'energia cinetica sia universale, Joule-Calc è stato progettato e ottimizzato per le energie e le unità di misura tipiche del mondo del softair e delle armi ad aria compressa di libera vendita. Non è pensato per la balistica delle armi da fuoco.</p>
+
+                <h3>Come posso passare da unità metriche (m/s) a imperiali (fps)?</h3>
+                <p>In ogni pannello di calcolo (Joule e Velocità) troverai un selettore in alto che ti permette di passare istantaneamente da "g & m/s" (metrico) a "gr & fps" (imperiale). La tua scelta verrà salvata per le visite future.</p>
+
+                <h3>Joule-Calc è gratuito?</h3>
+                <p>Sì, Joule-Calc è completamente gratuito. Il progetto è sostenuto da un piccolo banner pubblicitario non invasivo. Se trovi l'app utile, considera di disabilitare il tuo ad-blocker per questo sito per supportare il suo sviluppo.</p>
+
+                <h3>A cosa serve la sezione "Compensa Ottica"?</h3>
+                <p>Questa sezione ti aiuta a regolare la tua ottica (cannocchiale). Inserendo la distanza del bersaglio e di quanto il tuo colpo si è spostato (in cm), il calcolatore ti dirà di quanti "click" devi ruotare le torrette di alzo e deriva (in MOA o MRAD) per centrare il bersaglio.</p>
+
+                <h3>Come posso esportare lo storico?</h3>
+                <p>Sotto la lista dello storico, trovi il pulsante "Esporta". Cliccandolo, potrai scegliere se scaricare i tuoi dati in formato CSV (compatibile con Excel, Google Sheets, etc.) o copiare un riepilogo testuale da incollare dove preferisci.</p>
+
+
+            </article>
         </main>
 
-        <footer class="text-center p-4 mt-8">
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-                <a href="/guides.html" class="hover:underline">Guide</a>
-                <span class="mx-2">|</span>
-                <a href="/privacy.html" class="hover:underline">Privacy Policy</a>
-                <span class="mx-2">|</span>
-                <a href="/about.html" class="hover:underline">Chi Siamo</a>
-                <span class="mx-2">|</span>
-                <a href="/contact.html" class="hover:underline">Contatti</a>
-            </div>
-            <div class="text-xs text-gray-500 mt-2">
-                © 2025 Joule-Calc. Tutti i diritti riservati.
-            </div>
-        </footer>
-
+        <div class="mt-8 text-center">
+            <a href="/" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">
+                &larr; Torna al Calcolatore
+            </a>
+        </div>
+    
+    
+    <footer class="w-full text-center py-2 lg:max-w-6xl lg:mx-auto mt-auto">
+        <div class="text-xs text-gray-500 dark:text-gray-400 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+            <span class="whitespace-nowrap">© 2025 Joule-Calc</span>
+            <span class="hidden sm:inline">·</span>
+            <a href="/guides.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                Guide
+            </a>
+            <a href="/glossary.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                Glossario
+            </a>
+            <a href="/privacy.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                Privacy
+            </a>
+            <a href="/about.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Chi Siamo
+            </a>
+            <a href="/contact.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                Contatti
+            </a>
+        </div>
+    </footer>
     </div>
-
-</body>
 </html>
