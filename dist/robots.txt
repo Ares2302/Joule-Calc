@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://joule-calc.web.app/sitemap.xml

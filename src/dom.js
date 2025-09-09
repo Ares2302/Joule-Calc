@@ -52,7 +52,8 @@ export const moaDriftInput = document.getElementById('moaDrift');
 export const driftDirectionSelect = document.getElementById('driftDirection');
 export const calcolaMoaBtn = document.getElementById('calcolaMoaBtn');
 export const moaPerClickSelect = document.getElementById('moaPerClick');
-export const risultatoMoaDiv = document.getElementById('risultatoMoa');
+export const risultatoAlzoDiv = document.getElementById('risultatoAlzo');
+export const risultatoDerivaDiv = document.getElementById('risultatoDeriva');
 
 // Altri elementi
 export const htmlElement = document.documentElement;

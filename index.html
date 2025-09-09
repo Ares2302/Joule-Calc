@@ -36,7 +36,7 @@
         <span id="title-bar-tab-name" style="-webkit-app-region: no-drag; font-size: 13px; margin-left: 8px; opacity: 0.7;"></span>
     </div>
 
-    <div id="appContainer" class="w-full bg-white dark:bg-gray-800 dark:text-gray-300 lg:max-w-6xl lg:rounded-2xl lg:shadow-xl lg:p-8 lg:flex lg:flex-row lg:gap-8 lg:flex-grow lg:min-h-0 lg:overflow-hidden">
+    <div id="appContainer" class="w-full bg-white dark:bg-gray-800 dark:text-gray-300 lg:max-w-6xl lg:rounded-2xl lg:shadow-xl lg:p-8 lg:flex lg:flex-row lg:gap-8 lg:flex-grow lg:min-h-0 lg:overflow-hidden animate-fade-in-up">
         
         <!-- Contenitore principale del calcolatore -->
         <div id="calculator-section" class="lg:w-1/3 p-4 lg:p-0 lg:flex lg:flex-col lg:min-h-0">
@@ -286,9 +286,16 @@
                             </button>
                         </div>
     
-                        <!-- Area del risultato MOA -->
-                        <div id="risultatoMoa" class="bg-purple-100 border border-purple-300 text-purple-800 dark:bg-purple-900 dark:border-purple-700 dark:text-purple-200 p-4 rounded-md mt-4">
-                            <!-- Il contenuto verrà generato dinamicamente -->
+                        <!-- Area dei risultati MOA/MRAD -->
+                        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Risultato Alzo (Elevazione) -->
+                            <div id="risultatoAlzo" class="bg-purple-100 border border-purple-300 text-purple-800 dark:bg-purple-900 dark:border-purple-700 dark:text-purple-200 p-4 rounded-md text-center">
+                                <!-- Contenuto generato dinamicamente -->
+                            </div>
+                            <!-- Risultato Deriva (Windage) -->
+                            <div id="risultatoDeriva" class="bg-purple-100 border border-purple-300 text-purple-800 dark:bg-purple-900 dark:border-purple-700 dark:text-purple-200 p-4 rounded-md text-center">
+                                <!-- Contenuto generato dinamicamente -->
+                            </div>
                         </div>
                     </div>
                 </div>

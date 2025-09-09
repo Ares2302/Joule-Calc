@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import manifest from './public/manifest.json'
+import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
@@ -26,4 +27,17 @@ export default defineConfig({
       }
     }),
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        about: resolve(__dirname, 'about.html'),
+        contact: resolve(__dirname, 'contact.html'),
+        privacy: resolve(__dirname, 'privacy.html'),
+        guides: resolve(__dirname, 'guides.html'),
+        'guida-introduttiva': resolve(__dirname, 'guides/guida-introduttiva.html'),
+        'scegliere-pallini': resolve(__dirname, 'guides/scegliere-pallini.html'),
+      },
+    },
+  },
 })
