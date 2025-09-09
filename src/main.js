@@ -84,13 +84,6 @@ const setUnita = (unit) => {
   });
 };
 
-const applyTheme = (theme) => {
-  originalApplyTheme(theme);
-  const themeColor = theme === 'dark' ? '#111827' : '#ffffff';
-  const themeMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeMeta) themeMeta.setAttribute('content', themeColor);
-};
-
 const clickAudio = new Audio(clickSound);
 clickAudio.preload = 'auto';
 
@@ -107,33 +100,29 @@ const vibrate = (duration = 10) => {
 
 // --- Inizializzazione Globale ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Applica il tema immediatamente
-    applyTheme(getTheme());
+    // Lo script 'theme-loader.js' ora gestisce il tema per le pagine statiche.
+    // Questo script (main.js) è solo per la pagina principale.
 
     // --- Logica Specifica per la Pagina Principale (index.html) ---
-    if (document.getElementById('appContainer')) {
+    if (document.getElementById('appContainer')) { // Esegui solo se siamo nella pagina della calcolatrice
         initMainApp();
     }
 });
 
 // --- Funzione di Inizializzazione per l'App Principale ---
 function initMainApp() {
+    // Applica il tema e imposta il switcher (necessario qui per la pagina principale)
+    applyTheme(getTheme());
+    setupThemeSwitcher();
     // Listener di eventi globale delegato
-    document.body.addEventListener('click', (e) => {
+    document.body.addEventListener('click', (e) => { // Questo listener ora è solo per la pagina principale
         const target = e.target;
         const button = target.closest('button');
         if (!button) return;
 
+        // Gestione Menu
         const id = button.id;
 
-        // Azioni comuni a tutte le pagine
-        if (id === 'theme-switcher') {
-            vibrate();
-            const newTheme = getTheme() === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', newTheme);
-            applyTheme(newTheme);
-            return;
-        }
         if (id === 'infoBtn') { mostraModaleConHistory(DOM.infoModal); return; }
         if (id === 'closeInfoModalBtn') { nascondiModaleConHistory(DOM.infoModal); return; }
         if (id === 'confirmYesBtn') {
@@ -151,6 +140,11 @@ function initMainApp() {
             return;
         }
 
+        if (id === 'menu-btn') {
+            toggleMenu(true);
+            return;
+        }
+
         // Azioni specifiche dell'app principale
         if (id === 'calcolaBtn') { handleCalculateJoule(); return; }
         if (id === 'calcolaVelocitaBtn') { handleCalculateVelocity(); return; }
@@ -165,6 +159,11 @@ function initMainApp() {
             return;
         }
     });
+
+    // Chiudi menu cliccando sull'overlay
+    if (DOM.menuOverlay) {
+        DOM.menuOverlay.addEventListener('click', () => toggleMenu(false));
+    }
 
     caricaStorico();
 
@@ -385,6 +384,27 @@ function initMainApp() {
     handleLaunchParams();
 }
 
+function toggleMenu(open) {
+    const menu = DOM.sideMenu;
+    const overlay = DOM.menuOverlay;
+    if (!menu || !overlay) return;
+
+    if (open) {
+        overlay.classList.remove('hidden');
+        menu.classList.remove('-translate-x-full');
+    } else {
+        overlay.classList.add('hidden');
+        menu.classList.add('-translate-x-full');
+    }
+}
+
+const applyTheme = (theme) => {
+  originalApplyTheme(theme);
+  const themeColor = theme === 'dark' ? '#1f2937' : '#ffffff';
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeMeta) themeMeta.setAttribute('content', themeColor);
+};
+
 function switchTab(tabToActivate, panelToActivate) {
     const tabs = [DOM.tabJoule, DOM.tabVelocity, DOM.tabCompensation];
     const panels = [DOM.panelJoule, DOM.panelVelocity, DOM.panelCompensation];
@@ -411,4 +431,19 @@ function handleDeepLink() {
 
 function handleLaunchParams() {
     // Implementazione di handleLaunchParams
+}
+
+/**
+ * Imposta il listener per il pulsante di cambio tema.
+ * Questa funzione è globale e funziona su tutte le pagine.
+ */
+function setupThemeSwitcher() {
+    // Usiamo querySelectorAll perché ci possono essere più pulsanti in diverse pagine
+    document.querySelectorAll('#theme-switcher').forEach(button => {
+        button.addEventListener('click', () => {
+            const newTheme = getTheme() === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            applyTheme(newTheme);
+        });
+    });
 }

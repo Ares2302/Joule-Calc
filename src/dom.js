@@ -58,3 +58,8 @@ export const risultatoDerivaDiv = document.getElementById('risultatoDeriva');
 
 // Altri elementi
 export const htmlElement = document.documentElement;
+
+// Elementi del menu
+export const menuBtn = document.getElementById('menu-btn');
+export const sideMenu = document.getElementById('side-menu');
+export const menuOverlay = document.getElementById('menu-overlay');

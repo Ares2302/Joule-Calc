@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti - Joule-Calc</title>
-    <script type="module" src="/src/main.js"></script>
+    <title>Contatti - Joule-Calc</title>    
     <link rel="stylesheet" href="/src/style.css">
     <link rel="stylesheet" href="/src/fonts.css">
     <link rel="stylesheet" href="/src/guides.css">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body class="min-h-screen bg-gray-100 dark:bg-gray-900 lg:h-screen lg:flex lg:flex-col lg:items-center lg:p-4">
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center">
 
     <!-- Barra del titolo personalizzata per la PWA Desktop -->
     <div id="title-bar">
-        <!-- Esempio di contenuto: logo e titolo -->
         <img src="/logo-96x96.png" alt="Logo" style="width: 20px; height: 20px; -webkit-app-region: no-drag; margin-right: 8px;">
         <span style="-webkit-app-region: no-drag; font-size: 13px; font-weight: 600;">Joule-Calc</span>
         <span id="title-bar-tab-name" style="-webkit-app-region: no-drag; font-size: 13px; margin-left: 8px; opacity: 0.7;"></span>
     </div>
 
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8 lg:max-w-6xl animate-fade-in-up">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 lg:max-w-6xl animate-fade-in-up w-full">
         <header class="flex justify-between items-center mb-8">
             <div class="flex items-center gap-4">
                 <img src="/icon-192.png" alt="Logo di Joule-Calc" class="w-12 h-12 rounded-lg" width="48" height="48">
                 <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white">Contatti</h1>
             </div>
             <div class="flex items-center gap-1 sm:gap-2">
+                <!-- Pulsante Torna al Calcolatore -->
+                <a href="/" class="flex flex-col items-center p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200" aria-label="Torna al Calcolatore">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                    </svg>
+                    <span class="text-xs font-semibold">Calcolatore</span>
+                </a>
                 <!-- Pulsante di installazione (nascosto di default) -->
                 <button id="installAppBtn" class="hidden p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-opacity duration-300 ease-in-out" aria-label="Installa App">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -45,7 +50,7 @@
             </div>
         </header>
 
-        <main class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 lg:p-10">
+        <main class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 lg:p-10">
             <article class="prose prose-lg dark:prose-invert max-w-none">
                 <p class="lead">Siamo sempre felici di ascoltare la community. Se hai domande, suggerimenti per nuove funzionalità o hai bisogno di supporto, non esitare a contattarci.</p>
                 <h2>Come Contattarci</h2>
@@ -65,21 +70,31 @@
                 &larr; Torna al Calcolatore
             </a>
         </div>
-    </div>
     
-    <footer class="w-full text-center p-4 lg:max-w-6xl lg:mx-auto mt-4">
-        <div class="text-sm text-gray-600 dark:text-gray-400">
-            <a href="/guides.html" class="hover:underline">Guide</a>
-            <span class="mx-2">|</span>
-            <a href="/privacy.html" class="hover:underline">Privacy Policy</a>
-            <span class="mx-2">|</span>
-            <a href="/about.html" class="hover:underline">Chi Siamo</a>
-            <span class="mx-2">|</span>
-            <a href="/contact.html" class="hover:underline">Contatti</a>
-        </div>
-        <div class="text-xs text-gray-500 mt-2">
-            © 2025 Joule-Calc. Tutti i diritti riservati.
+    
+    <footer class="w-full text-center py-2 lg:max-w-6xl lg:mx-auto mt-auto">
+        <div class="text-xs text-gray-500 dark:text-gray-400 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+            <span class="whitespace-nowrap">© 2025 Joule-Calc</span>
+            <span class="hidden sm:inline">·</span>
+            <a href="/guides.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                Guide
+            </a>
+            <a href="/privacy.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                Privacy
+            </a>
+            <a href="/about.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Chi Siamo
+            </a>
+            <a href="/contact.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                Contatti
+            </a>
         </div>
     </footer>
+    </div>
+    <script type="module" src="/src/theme-loader.js"></script>
 </body>
 </html>

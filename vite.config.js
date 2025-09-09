@@ -38,6 +38,7 @@ export default defineConfig({
         'guida-introduttiva': resolve(__dirname, 'guides/guida-introduttiva.html'),
         'scegliere-pallini': resolve(__dirname, 'guides/scegliere-pallini.html'),
       },
+      
     },
   },
 })
