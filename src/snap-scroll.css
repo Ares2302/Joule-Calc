@@ -15,7 +15,7 @@
   /* 2. Trasforma il contenitore principale in un'area di scroll a scorrimento verticale */
   #appContainer {
     /* L'altezza viene ora gestita in style.css per tenere conto della title-bar */
-    height: calc(var(--vh, 1vh) * 100 - var(--title-bar-height, 0px));
+    height: calc(var(--vh, 1vh) * 100 - var(--title-bar-height, 0px)) !important;
     width: 100vw;
     max-width: 100vw;
     overflow-y: scroll; /* Abilita lo scrolling verticale */
@@ -40,7 +40,7 @@
     height: calc(var(--vh, 1vh) * 100);
     overflow-y: auto; /* Permette lo scrolling interno se il contenuto è più lungo della pagina */
     padding: 1rem;
-    padding-top: 2.5rem; /* Spazio extra in alto per non sovrapporre la status bar del telefono */
+    padding-top: 2rem; /* Spazio ridotto in alto per non sovrapporre la status bar del telefono */
     margin-top: 0; /* Rimuove il margine tra le sezioni */
     border-top: none; /* Rimuove il bordo tra le sezioni */
   }

@@ -20,6 +20,7 @@ export const historyModal = document.getElementById('historyModal'); //
 export const copyAllHistoryBtn = document.getElementById('copyAllHistoryBtn');
 export const fullHistoryContent = document.getElementById('fullHistoryContent');
 export const infoModal = document.getElementById('infoModal');
+export const exportModal = document.getElementById('exportModal');
 export const messageModal = document.getElementById('messageModal');
 export const modalMessageSpan = document.getElementById('modalMessage');
 export const confirmationModal = document.getElementById('confirmationModal');
@@ -52,7 +53,28 @@ export const moaDriftInput = document.getElementById('moaDrift');
 export const driftDirectionSelect = document.getElementById('driftDirection');
 export const calcolaMoaBtn = document.getElementById('calcolaMoaBtn');
 export const moaPerClickSelect = document.getElementById('moaPerClick');
-export const risultatoMoaDiv = document.getElementById('risultatoMoa');
+export const risultatoAlzoDiv = document.getElementById('risultatoAlzo');
+export const risultatoDerivaDiv = document.getElementById('risultatoDeriva');
 
 // Altri elementi
 export const htmlElement = document.documentElement;
+
+// Elementi del menu
+export const menuBtn = document.getElementById('menu-btn');
+export const sideMenu = document.getElementById('side-menu');
+export const closeMenuBtn = document.getElementById('close-menu-btn');
+export const menuOverlay = document.getElementById('menu-overlay');
+
+// PWA Install elements
+export const installAppBtn = document.getElementById('installAppBtn');
+export const installBanner = document.getElementById('install-banner');
+export const installAppBtnBanner = document.getElementById('installAppBtnBanner');
+export const closeInstallBannerBtn = document.getElementById('closeInstallBannerBtn');
+
+// Snap scroll sections and buttons
+export const calculatorSection = document.getElementById('calculator-section');
+export const historySection = document.getElementById('history-section');
+export const scrollToHistoryBtn = document.getElementById('scroll-to-history-btn');
+export const scrollToCalculatorBtn = document.getElementById('scroll-to-calculator-btn');
+export const historyScrollContainer = document.getElementById('history-scroll-container');
+export const scrollToHistoryTopBtn = document.getElementById('scrollToHistoryTopBtn');

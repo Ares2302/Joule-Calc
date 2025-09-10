@@ -16,6 +16,7 @@ export const helpTopics = {
                 <li><strong>Velocità:</strong> Inserisci la velocità del pallino misurata con un cronografo. L'unità (m/s o fps) dipende dallo stesso selettore.</li>
                 <li><strong>Calcola e Salva:</strong> Il pulsante calcola i Joule e aggiunge automaticamente il risultato allo storico sulla destra.</li>
             </ul>
+            <p class="mt-4">Per approfondire, leggi la nostra <a href="/guides/guida-introduttiva.html" class="text-indigo-600 dark:text-indigo-400 hover:underline">guida sul calcolo dei Joule</a>.</p>
         `
     },
     velocity: {
@@ -27,6 +28,7 @@ export const helpTopics = {
                 <li><strong>Peso pallino:</strong> Inserisci il peso del pallino che intendi usare.</li>
                 <li>Il risultato mostrerà la velocità necessaria sia in metri al secondo (m/s) che in piedi al secondo (fps).</li>
             </ul>
+            <p class="mt-4">Questo calcolo si basa sulla formula inversa dell'energia cinetica. Per saperne di più, consulta la <a href="/guides/guida-introduttiva.html" class="text-indigo-600 dark:text-indigo-400 hover:underline">guida principale</a>.</p>
         `
     },
     compensation: {
@@ -40,6 +42,7 @@ export const helpTopics = {
                 <li><strong>Spostamento orizzontale (Deriva):</strong> Misura di quanti centimetri il pallino si è spostato a destra o sinistra.</li>
                 <li><strong>Valore per Click:</strong> Seleziona il valore di correzione per ogni click della tua ottica (es. 1/4 MOA).</li>
             </ul>
+            <p class="mt-4">Per una spiegazione dettagliata su MOA e MRAD, leggi la nostra <a href="/guides/regolare-ottica.html" class="text-indigo-600 dark:text-indigo-400 hover:underline">guida alla regolazione dell'ottica</a>.</p>
         `
     }
 };

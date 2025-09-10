@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida: Normativa Armi ad Aria Compressa di Libera Vendita in Italia - Joule-Calc</title>
+    <meta name="description" content="Una guida completa sulla normativa italiana per le armi ad aria compressa di libera vendita, inclusi limiti di potenza, acquisto, trasporto e utilizzo.">
+    
+    <!-- Metadati SEO -->
+    <meta name="keywords" content="armi aria compressa, libera vendita, normativa italia, legge armi, 7.5 joule, porto d'armi, trasporto armi, utilizzo armi aria compressa">
+
+    <!-- Metadati per la condivisione sui social (Open Graph) -->
+    <meta property="og:title" content="Guida: Normativa Armi ad Aria Compressa di Libera Vendita in Italia - Joule-Calc">
+    <meta property="og:description" content="Una guida completa sulla normativa italiana per le armi ad aria compressa di libera vendita, inclusi limiti di potenza, acquisto, trasporto e utilizzo.">
+    <meta property="og:url" content="https://joule-calc.web.app/guides/guida-legale.html">
+    <link rel="canonical" href="https://joule-calc.web.app/guides/guida-legale.html">
+
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/fonts.css">
+    <link rel="stylesheet" href="/src/guides.css">
+
+    <!-- Favicon e manifest per PWA -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Dati Strutturati (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Normativa Armi ad Aria Compressa di Libera Vendita in Italia",
+      "author": {
+        "@type": "Person",
+        "name": "Alessandro Ferrara"
+      },
+      "datePublished": "2025-09-10",
+      "image": "https://joule-calc.web.app/icon-512.png"
+    }
+    </script>
+
+</head>
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center">
+
+    <!-- Barra del titolo personalizzata per la PWA Desktop -->
+    <div id="title-bar">
+        <img src="/logo-96x96.png" alt="Logo" style="width: 20px; height: 20px; -webkit-app-region: no-drag; margin-right: 8px;">
+        <span style="-webkit-app-region: no-drag; font-size: 13px; font-weight: 600;">Joule-Calc</span>
+        <span id="title-bar-tab-name" style="-webkit-app-region: no-drag; font-size: 13px; margin-left: 8px; opacity: 0.7;"></span>
+    </div>
+
+    <!-- Menu a comparsa -->
+    <div id="side-menu" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl z-[1100] transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Menu</h2>
+                <button id="close-menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Chiudi menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2">
+                <a href="/guides.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Guide</a>
+                <a href="/glossary.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Glossario</a>
+                <a href="/about.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Chi Siamo</a>
+                <a href="/contact.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Contatti</a>
+                <a href="/privacy.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Privacy</a>
+            </nav>
+        </div>
+    </div>
+    <!-- Overlay per il menu -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[1050] hidden"></div>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 lg:max-w-6xl animate-fade-in-up w-full">
+        
+        <header class="flex justify-between items-center mb-8">
+            <a href="/" class="flex items-center gap-4 group" aria-label="Torna alla homepage di Joule-Calc">
+                <img src="/icon-192.png" alt="Logo di Joule-Calc" class="w-12 h-12 rounded-lg transition-transform duration-300 group-hover:scale-105" width="48" height="48">
+                <span class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Joule-Calc</span>
+            </a>
+            <div class="flex items-center gap-1 sm:gap-2">
+                <!-- Pulsante Torna al Calcolatore -->
+                <a href="/" class="flex flex-col items-center p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200" aria-label="Torna al Calcolatore">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                    </svg>
+                    <span class="text-xs font-semibold">Calcolatore</span>
+                </a>
+                <button id="installAppBtn" class="hidden p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-opacity duration-300 ease-in-out" aria-label="Installa App">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                </button>
+                <button id="theme-switcher" class="cursor-pointer p-2 rounded-full transition-transform active:animate-pulse-subtle" aria-label="Cambia tema">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                </button>
+                <!-- Pulsante Hamburger Menu -->
+                <button id="menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-label="Apri menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 lg:p-10">
+            <div class="mb-6">
+                <a href="/guides.html" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-2 text-sm">&larr; Torna a tutte le guide</a>
+            </div>
+
+            <article class="prose prose-lg dark:prose-invert max-w-none">                
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">Armi ad Aria Compressa di Libera Vendita: La Normativa Italiana</h1>
+
+                <p class="lead">In Italia, il mondo delle armi ad aria compressa è regolamentato da una normativa specifica che distingue chiaramente tra strumenti di libera vendita e armi comuni da sparo. Comprendere queste distinzioni è fondamentale per ogni appassionato o potenziale acquirente, al fine di operare sempre nel rispetto della legge e in sicurezza.</p>
+
+                <h2>Cosa sono le armi a modesta capacità offensiva?</h2>
+                <p>La legislazione italiana, in particolare il <strong>Decreto Ministeriale 9 agosto 2001, n. 362</strong>, classifica come "armi con modesta capacità offensiva" quelle armi ad aria o a gas compressi, sia lunghe che corte, che sviluppano un'energia cinetica non superiore a 7,5 Joule (J). Queste armi non sono considerate armi comuni da sparo e, per questo, godono di un regime di "libera vendita".</p>
+                
+                <h2>Chi può acquistarle?</h2>
+                <p>L'acquisto di armi ad aria compressa di libera vendita è consentito a:</p>
+                <ul>
+                    <li><strong>Maggiorenni:</strong> È necessario aver compiuto 18 anni.</li>
+                    <li><strong>Documento d'identità:</strong> Al momento dell'acquisto, è obbligatorio presentare un documento d'identità valido.</li>
+                </ul>
+                <p>L'acquisto deve avvenire <strong>di persona presso un'armeria autorizzata</strong>. La vendita per corrispondenza con spedizione diretta a domicilio è vietata. Anche in caso di acquisto online, il ritiro deve sempre avvenire presso un'armeria che possa identificare l'acquirente.</p>
+                <p>La detenzione di queste armi <strong>non è soggetta a denuncia</strong> alle autorità di pubblica sicurezza e non ci sono limiti al numero di armi di libera vendita che si possono possedere.</p>
+
+                <h2>Trasporto e Porto: Le differenze fondamentali</h2>
+                <p>È cruciale distinguere tra "trasporto" e "porto" di un'arma:</p>
+                <ul>
+                    <li><strong>Trasporto:</strong> Consiste nello spostare l'arma da un luogo all'altro. È consentito per le armi di libera vendita, purché l'arma sia <strong>scarica, smontata (se possibile) e riposta in un'apposita custodia</strong> o imballaggio che ne impedisca l'uso immediato. Deve essere evidente che l'arma non è pronta all'uso.</li>
+                    <li><strong>Porto:</strong> Significa avere l'arma con sé, carica e pronta all'uso, fuori dalla propria abitazione. Il porto di armi ad aria compressa di libera vendita è <strong>vietato senza un "giustificato motivo"</strong>. Non è consentito portare l'arma in luoghi pubblici, aperti al pubblico o durante manifestazioni. Un giustificato motivo può essere il trasporto verso un poligono di tiro o un terreno privato per l'esercizio del tiro sportivo.</li>
+                </ul>
+                <p>In sintesi, puoi trasportare la tua arma ad aria compressa in sicurezza, ma non puoi portarla in giro come se fosse un accessorio.</p>
+
+                <h2>Dove e come si possono utilizzare?</h2>
+                <p>L'utilizzo delle armi ad aria compressa di libera vendita è soggetto a precise limitazioni per garantire la sicurezza:</p>
+                <ul>
+                    <li><strong>Luoghi privati:</strong> L'uso è consentito esclusivamente in luoghi privati non aperti al pubblico (es. la propria abitazione, un terreno privato recintato) dove non vi sia rischio di recare danno o disturbo a terzi.</li>
+                    <li><strong>Poligoni di tiro:</strong> Sono i luoghi ideali e più sicuri per l'esercizio del tiro con queste armi.</li>
+                    <li><strong>Supervisione:</strong> Sebbene l'acquisto sia consentito ai maggiorenni, l'uso da parte di minori è ammesso solo sotto la stretta e costante supervisione di un adulto.</li>
+                    <li><strong>Munizioni:</strong> Devono essere utilizzati esclusivamente "pallini inerti" (es. diabolo in piombo, sfere in acciaio). È assolutamente vietato l'uso di munizioni contenenti sostanze irritanti o proiettili modificati.</li>
+                    <li><strong>Modalità di funzionamento:</strong> Sono ammesse solo armi con funzionamento semiautomatico o a ripetizione semplice. Le armi a raffica non sono consentite.</li>
+                </ul>
+
+                <h2>Riferimenti Normativi</h2>
+                <p>La normativa principale che regola le armi ad aria compressa di libera vendita in Italia include:</p>
+                <ul>
+                    <li><strong>Legge 18 aprile 1975, n. 110:</strong> "Norme integrative della disciplina vigente per il controllo delle armi, delle munizioni e degli esplosivi." (Art. 2, comma 3 e Art. 11)</li>
+                    <li><strong>Decreto Ministeriale 9 agosto 2001, n. 362:</strong> "Regolamento concernente la disciplina delle armi ad aria o a gas compressi, sia lunghe che corte, i cui proiettili erogano un'energia cinetica non superiore a 7,5 joule."</li>
+                </ul>
+
+                <h2>Domande Frequenti (FAQ)</h2>
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <h3 class="faq-question">Devo denunciare l'acquisto di un'arma ad aria compressa di libera vendita?</h3>
+                        <p class="faq-answer">No, le armi ad aria compressa con energia cinetica inferiore a 7,5 Joule non sono soggette a denuncia di detenzione.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Posso acquistare un'arma ad aria compressa online e riceverla a casa?</h3>
+                        <p class="faq-answer">No, la vendita per corrispondenza con spedizione diretta a domicilio è vietata. L'acquisto deve sempre avvenire di persona presso un'armeria autorizzata, anche se l'ordine è stato effettuato online.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Posso usare la mia arma ad aria compressa nel mio giardino?</h3>
+                        <p class="faq-answer">Sì, a condizione che il giardino sia un luogo privato non aperto al pubblico, ben delimitato e che l'uso non rechi pericolo o disturbo a terzi (es. vicini, passanti).</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Qual è la differenza tra trasporto e porto?</h3>
+                        <p class="faq-answer">Il <strong>trasporto</strong> è lo spostamento dell'arma scarica e in custodia. Il <strong>porto</strong> è l'avere l'arma con sé, carica e pronta all'uso, fuori dalla propria abitazione. Il porto è generalmente vietato senza giustificato motivo.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Posso modificare la potenza della mia arma ad aria compressa per superare i 7,5 Joule?</h3>
+                        <p class="faq-answer">Assolutamente no. Modificare un'arma di libera vendita per superare i 7,5 Joule la trasforma in un'arma comune da sparo, rendendone la detenzione e il porto illegali senza le dovute autorizzazioni (porto d'armi e denuncia).</p>
+                    </div>
+                </div>
+
+            </article>
+
+            <hr class="my-8 border-gray-300 dark:border-gray-600">
+
+            <section>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Articoli Correlati</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="/guides/guida-introduttiva.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Il Joule: Guida al Calcolo dell'Energia Cinetica</h4>
+                    </a>
+                    <a href="/guides/scegliere-pallini.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Scegliere il Pallino Giusto</h4>
+                    </a>
+                    <a href="/guides/guida-cronografo.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Guida al Cronografo</h4>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <div class="mt-8 text-center">
+            <a href="/" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">&larr; Torna al Calcolatore</a>
+        </div>
+        <footer class="w-full text-center py-2 lg:max-w-6xl lg:mx-auto mt-auto pt-8">
+            <div class="text-xs text-gray-500 dark:text-gray-400 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+                <span class="whitespace-nowrap">© 2025 Joule-Calc</span>
+                <span class="hidden sm:inline">·</span>
+                <a href="/guides.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    Guide
+                </a>
+            <a href="/glossary.html" class="inline-flex items-center gap-1 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                Glossario
+            </a>
+                <a href="/privacy.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    Privacy
+                </a>
+                <a href="/about.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    Chi Siamo
+                </a>
+                <a href="/contact.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    Contatti
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="module" src="/src/theme-loader.js"></script>
+</body>
+</html>

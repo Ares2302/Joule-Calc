@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida al Cronografo: Misurare Velocità e Joule - Joule-Calc</title>
+    <meta name="description" content="Una guida completa su come usare un cronografo per misurare la velocità (FPS/m/s) e l'energia (Joule) della tua replica da softair o arma ad aria compressa.">
+    
+    <!-- Metadati SEO -->
+    <meta name="keywords" content="guida cronografo, come usare cronografo, cronografo softair, misurare fps, misurare joule, test potenza, xcortech, acetech">
+
+    <!-- Metadati per la condivisione sui social (Open Graph) -->
+    <meta property="og:title" content="Guida al Cronografo: Misurare Velocità e Joule - Joule-Calc">
+    <meta property="og:description" content="Una guida completa su come usare un cronografo per misurare la velocità (FPS/m/s) e l'energia (Joule) della tua replica da softair o arma ad aria compressa.">
+    <meta property="og:url" content="https://joule-calc.web.app/guides/guida-cronografo.html">
+    <link rel="canonical" href="https://joule-calc.web.app/guides/guida-cronografo.html">
+
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/fonts.css">
+    <link rel="stylesheet" href="/src/guides.css">
+
+    <!-- Favicon e manifest per PWA -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Dati Strutturati (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Guida al Cronografo: Lo Strumento Essenziale per la Precisione",
+      "author": {
+        "@type": "Person",
+        "name": "Alessandro Ferrara"
+      },
+      "datePublished": "2025-09-10",
+      "image": "https://joule-calc.web.app/icon-512.png"
+    }
+    </script>
+
+</head>
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center">
+
+    <!-- Barra del titolo personalizzata per la PWA Desktop -->
+    <div id="title-bar">
+        <img src="/logo-96x96.png" alt="Logo" style="width: 20px; height: 20px; -webkit-app-region: no-drag; margin-right: 8px;">
+        <span style="-webkit-app-region: no-drag; font-size: 13px; font-weight: 600;">Joule-Calc</span>
+        <span id="title-bar-tab-name" style="-webkit-app-region: no-drag; font-size: 13px; margin-left: 8px; opacity: 0.7;"></span>
+    </div>
+
+    <!-- Menu a comparsa -->
+    <div id="side-menu" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl z-[1100] transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Menu</h2>
+                <button id="close-menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Chiudi menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2">
+                <a href="/guides.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Guide</a>
+                <a href="/glossary.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Glossario</a>
+                <a href="/about.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Chi Siamo</a>
+                <a href="/contact.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Contatti</a>
+                <a href="/privacy.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Privacy</a>
+            </nav>
+        </div>
+    </div>
+    <!-- Overlay per il menu -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[1050] hidden"></div>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 lg:max-w-6xl animate-fade-in-up w-full">
+        
+        <header class="flex justify-between items-center mb-8">
+            <a href="/" class="flex items-center gap-4 group" aria-label="Torna alla homepage di Joule-Calc">
+                <img src="/icon-192.png" alt="Logo di Joule-Calc" class="w-12 h-12 rounded-lg transition-transform duration-300 group-hover:scale-105" width="48" height="48">
+                <span class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Joule-Calc</span>
+            </a>
+            <div class="flex items-center gap-1 sm:gap-2">
+                <a href="/" class="flex flex-col items-center p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200" aria-label="Torna al Calcolatore">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" /></svg>
+                    <span class="text-xs font-semibold">Calcolatore</span>
+                </a>
+                <button id="installAppBtn" class="hidden p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-opacity duration-300 ease-in-out" aria-label="Installa App">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                </button>
+                <button id="theme-switcher" class="cursor-pointer p-2 rounded-full transition-transform active:animate-pulse-subtle" aria-label="Cambia tema">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                </button>
+                <button id="menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-label="Apri menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 lg:p-10">
+            <div class="mb-6">
+                <a href="/guides.html" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-2 text-sm">&larr; Torna a tutte le guide</a>
+            </div>
+
+            <article class="prose prose-lg dark:prose-invert max-w-none">                
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">Guida al Cronografo: Il Tuo Miglior Amico per la Precisione</h1>
+
+                <p class="lead">Nel mondo del softair e dell'aria compressa, la conoscenza è potere. Sapere esattamente a quale velocità spara la tua replica non è solo una questione di conformità alle regole, ma è il primo passo per ottenere la massima precisione. Lo strumento indispensabile per questo compito è il <strong>cronografo</strong>.</p>
+
+                <h2>Cos'è un Cronografo e Perché è Essenziale?</h2>
+                <p>Un cronografo balistico (o "crono" nel gergo comune) è un dispositivo elettronico progettato per misurare la velocità di un proiettile in volo. Per un giocatore di softair o un tiratore, è uno strumento fondamentale per diverse ragioni:</p>
+                <ul>
+                    <li><strong>Verifica della Potenza:</strong> È l'unico modo per essere certi che la propria replica rientri nei limiti di legge e nei regolamenti specifici dei campi da gioco.</li>
+                    <li><strong>Diagnostica:</strong> Una velocità incostante o in calo può indicare problemi meccanici (perdite d'aria, molla snervata, ecc.). Il cronografo è il tuo primo strumento di diagnostica.</li>
+                    <li><strong>Ottimizzazione (Tuning):</strong> Quando si effettuano modifiche (es. cambio molla, gommino Hop-Up), il cronografo permette di misurare l'impatto reale di ogni upgrade.</li>
+                </ul>
+
+                <h2>Come Funziona?</h2>
+                <p>La maggior parte dei cronografi funziona con un sistema di sensori ottici. All'interno del tunnel del dispositivo ci sono due sensori a infrarossi a una distanza nota. Quando il pallino passa, interrompe prima il fascio del primo sensore e poi quello del secondo. Il cronografo misura il tempo infinitesimale che intercorre tra le due interruzioni e, conoscendo la distanza, calcola la velocità con una semplice formula: <strong>Velocità = Distanza / Tempo</strong>.</p>
+
+                <h2>Guida Pratica all'Utilizzo</h2>
+                <p>Usare un cronografo è semplice, ma seguire alcuni passaggi garantisce misurazioni accurate.</p>
+                
+                <h4 class="text-gray-800 dark:text-white font-semibold">Passo 1: Configurazione del Cronografo</h4>
+                <p>Prima di sparare, assicurati di aver impostato correttamente i parametri sul tuo cronografo. I più comuni sono:</p>
+                <ul>
+                    <li><strong>Peso del Pallino (BB):</strong> Imposta il peso esatto del pallino che stai utilizzando (es. 0.20g, 0.25g, 0.28g). Questo è FONDAMENTALE perché il cronografo possa calcolare i Joule correttamente.</li>
+                    <li><strong>Unità di Misura:</strong> Scegli se visualizzare la velocità in Metri al Secondo (m/s) o Piedi al Secondo (FPS).</li>
+                </ul>
+
+                <h4 class="text-gray-800 dark:text-white font-semibold">Passo 2: Posizionamento e Sparo</h4>
+                <p>Posiziona il cronografo su una superficie stabile. Avvicina la volata della tua replica all'imboccatura del tunnel del cronografo, mantenendola il più possibile centrata e allineata. Spara un singolo colpo attraverso il tunnel.</p>
+                <blockquote>
+                    <p><strong>Consiglio:</strong> Non appoggiare la canna direttamente sul cronografo per non alterare la misurazione con le vibrazioni. Mantieni una distanza di qualche centimetro.</p>
+                </blockquote>
+
+                <h4 class="text-gray-800 dark:text-white font-semibold">Passo 3: Lettura dei Dati</h4>
+                <p>Il display del cronografo mostrerà immediatamente i dati del colpo. Tipicamente vedrai:</p>
+                <ul>
+                    <li>La velocità (in m/s o FPS).</li>
+                    <li>L'energia calcolata (in Joule).</li>
+                    <li>Spesso anche il Rateo di Fuoco (ROF), se spari a raffica.</li>
+                </ul>
+
+                <h4 class="text-gray-800 dark:text-white font-semibold">Passo 4: Analisi della Costanza</h4>
+                <p>Non fermarti al primo colpo! Spara una raffica di 5-10 colpi singoli e osserva le variazioni di velocità. Una replica in buona salute dovrebbe avere uno scostamento minimo tra i colpi (idealmente entro ±1 m/s). Variazioni maggiori possono indicare un problema da risolvere.</p>
+                <p>Una volta ottenuta una velocità media affidabile, puoi usare <a href="/">Joule-Calc</a> per salvare e storicizzare le tue misurazioni, tenendo traccia delle performance della tua replica nel tempo.</p>
+
+                <h2>Consigli per Misure Accurate</h2>
+                <ul>
+                    <li><strong>Luce Adeguata:</strong> I cronografi ottici funzionano meglio con una buona illuminazione ambientale, ma non con la luce solare diretta che può accecare i sensori. Se sei all'aperto, cerca una zona d'ombra.</li>
+                    <li><strong>Batterie Cariche:</strong> Batterie quasi scariche possono portare a letture errate. Usa sempre batterie ben cariche.</li>
+                    <li><strong>Pallini di Qualità:</strong> Pallini di scarsa qualità, deformati o con peso incostante, daranno ovviamente risultati incostanti.</li>
+                </ul>
+
+            </article>
+
+            <hr class="my-8 border-gray-300 dark:border-gray-600">
+
+            <section>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Articoli Correlati</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="/guides/guida-introduttiva.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Guida Introduttiva: Capire i Joule</h4>
+                    </a>
+                    <a href="/guides/scegliere-pallini.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Come Scegliere il Pallino Giusto</h4>
+                    </a>
+                    <a href="/guides/regolare-ottica.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Regolare l'Ottica: Guida a MOA e MRAD</h4>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <div class="mt-8 text-center">
+            <a href="/" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">&larr; Torna al Calcolatore</a>
+        </div>
+        <footer class="w-full text-center py-2 lg:max-w-6xl lg:mx-auto mt-auto pt-8">
+            <div class="text-xs text-gray-500 dark:text-gray-400 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+                <span class="whitespace-nowrap">© 2025 Joule-Calc</span>
+                <span class="hidden sm:inline">·</span>
+                <a href="/guides.html" class="inline-flex items-center gap-1 hover:underline">Guide</a>
+                <a href="/glossary.html" class="inline-flex items-center gap-1 hover:underline">Glossario</a>
+                <a href="/privacy.html" class="inline-flex items-center gap-1 hover:underline">Privacy</a>
+                <a href="/about.html" class="inline-flex items-center gap-1 hover:underline">Chi Siamo</a>
+                <a href="/contact.html" class="inline-flex items-center gap-1 hover:underline">Contatti</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="module" src="/src/theme-loader.js"></script>
+</body>
+</html>

@@ -36,12 +36,36 @@ export const mostraMessaggio = (message, isSuccess = true) => {
     }, 3000);
 };
 
-export const copiaTesto = (testo, messaggioSuccesso = 'Testo copiato negli appunti!') => {
-    navigator.clipboard.writeText(testo).then(() => {
+export const copiaTesto = (testo, messaggioSuccesso = 'Testo copiato negli appunti!') => {    
+    // Approccio moderno (preferito)
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(testo).then(() => {
+            mostraMessaggio(messaggioSuccesso);
+        }).catch(() => {
+            // Se l'API moderna fallisce, prova il fallback
+            fallbackCopia(testo, messaggioSuccesso);
+        });
+    } else {
+        // Se l'API moderna non è disponibile, usa subito il fallback
+        fallbackCopia(testo, messaggioSuccesso);
+    }
+};
+
+const fallbackCopia = (testo, messaggioSuccesso) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = testo;
+    textArea.style.position = "fixed"; // Evita di scrollare la pagina
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        document.execCommand('copy');
         mostraMessaggio(messaggioSuccesso);
-    }).catch(() => {
+    } catch (err) {
         mostraMessaggio('Errore durante la copia. Prova a selezionare e copiare manualmente.', false);
-    });
+    }
+    document.body.removeChild(textArea);
 };
 
 export function getPendingAction() {

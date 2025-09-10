@@ -6,6 +6,8 @@ export const handleEnterKey = (currentInput, nextElementOrAction) => {
         if (event.key === 'Enter') {
             event.preventDefault();
             if (typeof nextElementOrAction === 'function') {
+                // Rimuove il focus dall'input corrente per nascondere la tastiera su mobile
+                currentInput.blur(); 
                 nextElementOrAction();
             } else if (nextElementOrAction) {
                 nextElementOrAction.focus();
@@ -102,24 +104,24 @@ export const generaTestoCondivisione = () => {
     return testo;
 };
 
-export const copiaTesto = (testo) => {
-    navigator.clipboard.writeText(testo).then(() => {
-        mostraMessaggio('Storico copiato negli appunti!');
-    }).catch(() => {
-        mostraMessaggio('Errore durante la copia. Prova a selezionare e copiare manualmente.', false);
-    });
-};
-
 export const condividiStorico = (testoDaCondividere) => {
     // Se non viene fornito un testo, lo genera internamente per coerenza.
     const testo = testoDaCondividere || (generaTestoCondivisione() + '\n\n---\nGenerato da Joule-Calc: https://joule-calc.web.app/');
 
-    if (navigator.share) {
-        navigator.share({ title: 'Storico Calcoli Joule', text: testo })
+    const shareData = {
+        title: 'Storico Calcoli Joule',
+        text: testo,
+    };
+
+    // Controlla se l'API di condivisione è disponibile e se può condividere i dati specifici
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+        navigator.share(shareData)
             .then(() => mostraMessaggio('Storico condiviso con successo!'))
             .catch((error) => { if (error.name !== 'AbortError') mostraMessaggio('Condivisione annullata o fallita.', false); });
     } else {
-        mostraMessaggio('La condivisione non è supportata. Usa il tasto "Copia".', false);
+        // Se la condivisione non è possibile, mostra un messaggio chiaro.
+        // Questo può accadere su browser desktop o se l'app non è servita tramite HTTPS.
+        mostraMessaggio('La condivisione non è supportata su questo browser o dispositivo. Usa il tasto "Copia".', false);
     }
 };
 

@@ -4,10 +4,11 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+content: [
+  "./*.html",
+  "./guides/**/*.html",
+  "./src/**/*.{js,ts,jsx,tsx}",
+],
   safelist: [
     'border-indigo-500',
     'text-indigo-600',
@@ -41,5 +42,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

@@ -25,18 +25,53 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+    <!-- Dati Strutturati (Schema.org) per l'applicazione -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Joule-Calc",
+      "description": "Calcolatore di Joule per softair e aria compressa con storico, calcolo inverso della velocità e compensazione ottica (MOA/MRAD).",
+      "applicationCategory": "Utilities",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 support",
+      "url": "https://joule-calc.web.app/",
+      "author": {
+        "@type": "Person",
+        "name": "Alessandro Ferrara"
+      }
+    }
+    </script>
 </head>
-<body class="min-h-screen bg-gray-100 dark:bg-gray-900 lg:h-screen lg:flex lg:flex-col lg:items-center lg:p-4">
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center">
 
     <!-- Barra del titolo personalizzata per la PWA Desktop -->
     <div id="title-bar">
-        <!-- Esempio di contenuto: logo e titolo -->
         <img src="/logo-96x96.png" alt="Logo" style="width: 20px; height: 20px; -webkit-app-region: no-drag; margin-right: 8px;">
         <span style="-webkit-app-region: no-drag; font-size: 13px; font-weight: 600;">Joule-Calc</span>
         <span id="title-bar-tab-name" style="-webkit-app-region: no-drag; font-size: 13px; margin-left: 8px; opacity: 0.7;"></span>
     </div>
 
-    <div id="appContainer" class="w-full bg-white dark:bg-gray-800 dark:text-gray-300 lg:max-w-6xl lg:rounded-2xl lg:shadow-xl lg:p-8 lg:flex lg:flex-row lg:gap-8 lg:flex-grow lg:min-h-0 lg:overflow-hidden">
+    <!-- Menu a comparsa -->
+    <div id="side-menu" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl z-[1100] transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Menu</h2>
+                <button id="close-menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Chiudi menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2">
+                <a href="/guides.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Guide</a>
+                <a href="/glossary.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Glossario</a>
+                <a href="/about.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Chi Siamo</a>
+                <a href="/contact.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Contatti</a>
+                <a href="/privacy.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Privacy</a>
+            </nav>
+        </div>
+    </div>
+    <!-- Overlay per il menu -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[1050] hidden"></div>
+
+    <div id="appContainer" class="w-full bg-white dark:bg-gray-800 dark:text-gray-300 lg:max-w-6xl lg:rounded-2xl lg:shadow-xl lg:p-8 lg:flex lg:flex-row lg:gap-8 lg:flex-grow lg:min-h-0 lg:overflow-hidden animate-fade-in-up lg:my-4 lg:h-[calc(100vh-2rem)]">
         
         <!-- Contenitore principale del calcolatore -->
         <div id="calculator-section" class="lg:w-1/3 p-4 lg:p-0 lg:flex lg:flex-col lg:min-h-0">
@@ -69,6 +104,10 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                             </svg>
                         </button>
+                        <!-- Pulsante Hamburger Menu -->
+                        <button id="menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-label="Apri menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        </button>
                     </div>
                 </div>
 
@@ -83,7 +122,7 @@
                     </div>
                 </div>
     
-                <hr class="my-4 border-gray-300 dark:border-gray-600">
+                <hr class="my-2 border-gray-300 dark:border-gray-600">
     
                 <!-- Tabs -->
                 <div class="flex justify-center border-b border-gray-300 dark:border-gray-600">
@@ -286,9 +325,14 @@
                             </button>
                         </div>
     
-                        <!-- Area del risultato MOA -->
-                        <div id="risultatoMoa" class="bg-purple-100 border border-purple-300 text-purple-800 dark:bg-purple-900 dark:border-purple-700 dark:text-purple-200 p-4 rounded-md mt-4">
-                            <!-- Il contenuto verrà generato dinamicamente -->
+                        <!-- Area dei risultati MOA/MRAD -->
+                        <div class="mt-4 flex flex-row gap-4">
+                            <div id="risultatoAlzo" class="flex-1 bg-purple-100 border border-purple-300 text-purple-800 dark:bg-purple-900 dark:border-purple-700 dark:text-purple-200 p-4 rounded-md text-center">
+                                <p class="font-semibold mb-1">Verticale</p><p class="text-sm text-gray-600 dark:text-gray-400">Nessuna correzione</p>
+                            </div>
+                            <div id="risultatoDeriva" class="flex-1 bg-purple-100 border border-purple-300 text-purple-800 dark:bg-purple-900 dark:border-purple-700 dark:text-purple-200 p-4 rounded-md text-center">
+                                <p class="font-semibold mb-1">Orizzontale</p><p class="text-sm text-gray-600 dark:text-gray-400">Nessuna correzione</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -337,44 +381,49 @@
 
             <!-- Pulsanti dello storico -->
             <div id="historyButtons" class="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
-                <div class="flex flex-wrap items-stretch justify-center gap-2">
-                    <button id="clearHistoryBtn" class="flex-1 text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200 min-w-[120px]">
+                <div class="flex items-stretch justify-center gap-2">
+                    <button id="clearHistoryBtn" class="flex-1 text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">
                        Cancella
                     </button>
-                    <button id="copyHistoryBtn" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200 min-w-[120px]">
+                    <button id="copyHistoryBtn" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">
                         Copia
                     </button>
-                    <button id="shareHistoryBtn" class="flex-1 text-center bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200 min-w-[120px]">
+                    <button id="shareHistoryBtn" class="flex-1 text-center bg-emerald-800 hover:bg-emerald-900 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">
                         Condividi
                     </button>
-                    <button id="exportBtn" class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200 min-w-[120px]">Esporta</button>
+                    <button id="exportBtn" class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">Esporta</button>
                 </div>
             </div>
+
+            <footer class="w-full text-center py-2 mt-auto lg:mt-4 flex-shrink-0">
+                <div class="text-xs text-gray-500 dark:text-gray-400 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+                    <span class="whitespace-nowrap">© 2025 Joule-Calc</span>
+                    <span class="hidden sm:inline">·</span>
+                    <a href="/guides.html" class="inline-flex items-center gap-1 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        Guide
+                    </a>
+                    <a href="/glossary.html" class="inline-flex items-center gap-1 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        Glossario
+                    </a>
+                    <a href="/privacy.html" class="inline-flex items-center gap-1 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        Privacy
+                    </a>
+                    <a href="/about.html" class="inline-flex items-center gap-1 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Chi Siamo
+                    </a>
+                    <a href="/contact.html" class="inline-flex items-center gap-1 hover:underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        Contatti
+                    </a>
+                </div>
+            </footer>
         </div>
     </div>
     
-    <!-- Modale per le informazioni -->
-    <div id="infoModal" class="modal overflow-y-auto p-4 items-start sm:items-center" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
-        <div class="modal-content dark:bg-gray-800 p-6 sm:p-10">
-            <h3 id="infoModalTitle" class="text-xl sm:text-2xl font-bold mb-4 dark:text-white">Guida Rapida</h3>
-            <div class="space-y-2 text-gray-700 dark:text-gray-300">
-                <ul class="list-disc list-inside space-y-2">
-                    <li><strong>Calcola Joule:</strong> Inserisci peso e velocità per ottenere l'energia. I calcoli vengono salvati nello storico.</li>
-                    <li><strong>Calcola Velocità:</strong> Trova la velocità (m/s e fps) necessaria per un dato valore di Joule.</li>
-                    <li><strong>Compensa Ottica:</strong> Traduci la deviazione del colpo (in cm) in click (MOA/MRAD) per la tua ottica.</li>
-                    <li><strong>Storico Avanzato:</strong> I calcoli sono raggruppati per peso. Ordina i risultati e visualizza le medie.</li>
-                    <li><strong>Esporta e Condividi:</strong> Salva lo storico in formato CSV o copia un riepilogo testuale.</li>
-                    <li><strong>Unità e Tema:</strong> Passa da unità metriche a imperiali e scegli tra tema chiaro o scuro.</li>
-                </ul>
-            </div>
-            <div class="text-right mt-6">
-                <button id="closeInfoModalBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">
-                    Chiudi
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Modale per lo storico completo -->
     <div id="historyModal" class="modal overflow-y-auto p-4 items-start sm:items-center" role="dialog" aria-modal="true" aria-labelledby="historyModalTitle">
         <div class="modal-content dark:bg-gray-800 w-full max-w-3xl">
@@ -392,6 +441,26 @@
                 <button id="clearAllHistoryBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">
                     Cancella Tutto
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale per le informazioni -->
+    <div id="infoModal" class="modal overflow-y-auto p-4 items-start sm:items-center" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+        <div class="modal-content dark:bg-gray-800 p-6 sm:p-10">
+            <h3 id="infoModalTitle" class="text-xl sm:text-2xl font-bold mb-4 dark:text-white">Guida Rapida</h3>
+            <div class="space-y-2 text-gray-700 dark:text-gray-300">
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>Calcola Joule:</strong> Inserisci peso e velocità per ottenere l'energia. I calcoli vengono salvati nello storico.</li>
+                    <li><strong>Calcola Velocità:</strong> Trova la velocità (m/s e fps) necessaria per un dato valore di Joule.</li>
+                    <li><strong>Compensa Ottica:</strong> Traduci la deviazione del colpo (in cm) in click (MOA/MRAD) per la tua ottica.</li>
+                    <li><strong>Storico Avanzato:</strong> I calcoli sono raggruppati per peso. Ordina i risultati e visualizza le medie.</li>
+                    <li><strong>Esporta e Condividi:</strong> Salva lo storico in formato CSV o copia un riepilogo testuale.</li>
+                    <li><strong>Unità e Tema:</strong> Passa da unità metriche a imperiali e scegli tra tema chiaro o scuro.</li>
+                </ul>
+            </div>
+            <div class="text-right mt-6">
+                <button id="closeInfoModalBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">Chiudi</button>
             </div>
         </div>
     </div>

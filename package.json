@@ -6,14 +6,16 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.1",
     "vite": "^5.3.1",
-    "vite-plugin-pwa": "^0.20.0"
+    "vite-plugin-pwa": "^0.20.0",
+    "vite-plugin-sitemap": "^0.8.2"
   },
   "dependencies": {
     "chartjs-adapter-date-fns": "^3.0.0",

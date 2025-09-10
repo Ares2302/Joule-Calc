@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida all'Hop-Up: Cos'è e Come Regolarlo - Joule-Calc</title>
+    <meta name="description" content="Una guida completa per capire cos'è il sistema Hop-Up, come funziona e come regolarlo perfettamente per massimizzare la gittata e la precisione della tua replica da softair.">
+    
+    <!-- Metadati SEO -->
+    <meta name="keywords" content="guida hop-up, regolare hop-up, cos'è hop-up, softair, precisione, gittata, effetto magnus, gommino hop-up">
+
+    <!-- Metadati per la condivisione sui social (Open Graph) -->
+    <meta property="og:title" content="Guida all'Hop-Up: Cos'è e Come Regolarlo - Joule-Calc">
+    <meta property="og:description" content="Una guida completa per capire cos'è il sistema Hop-Up, come funziona e come regolarlo perfettamente per massimizzare la gittata e la precisione della tua replica da softair.">
+    <meta property="og:url" content="https://joule-calc.web.app/guides/guida-hop-up.html">
+    <link rel="canonical" href="https://joule-calc.web.app/guides/guida-hop-up.html">
+
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/fonts.css">
+    <link rel="stylesheet" href="/src/guides.css">
+
+    <!-- Favicon e manifest per PWA -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Dati Strutturati (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Guida all'Hop-Up: Il Segreto di Gittata e Precisione",
+      "author": {
+        "@type": "Person",
+        "name": "Alessandro Ferrara"
+      },
+      "datePublished": "2025-09-09",
+      "image": "https://joule-calc.web.app/icon-512.png"
+    }
+    </script>
+</head>
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center">
+
+    <!-- Barra del titolo personalizzata per la PWA Desktop -->
+    <div id="title-bar">
+        <img src="/logo-96x96.png" alt="Logo" style="width: 20px; height: 20px; -webkit-app-region: no-drag; margin-right: 8px;">
+        <span style="-webkit-app-region: no-drag; font-size: 13px; font-weight: 600;">Joule-Calc</span>
+        <span id="title-bar-tab-name" style="-webkit-app-region: no-drag; font-size: 13px; margin-left: 8px; opacity: 0.7;"></span>
+    </div>
+
+    <!-- Menu a comparsa -->
+    <div id="side-menu" class="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl z-[1100] transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-800 dark:text-white">Menu</h2>
+                <button id="close-menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Chiudi menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2">
+                <a href="/guides.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Guide</a>
+                <a href="/glossary.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Glossario</a>
+                <a href="/about.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Chi Siamo</a>
+                <a href="/contact.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Contatti</a>
+                <a href="/privacy.html" class="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">Privacy</a>
+            </nav>
+        </div>
+    </div>
+    <!-- Overlay per il menu -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[1050] hidden"></div>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 lg:max-w-6xl animate-fade-in-up w-full">
+        
+        <header class="flex justify-between items-center mb-8">
+            <a href="/" class="flex items-center gap-4 group" aria-label="Torna alla homepage di Joule-Calc">
+                <img src="/icon-192.png" alt="Logo di Joule-Calc" class="w-12 h-12 rounded-lg transition-transform duration-300 group-hover:scale-105" width="48" height="48">
+                <span class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">Joule-Calc</span>
+            </a>
+            <div class="flex items-center gap-1 sm:gap-2">
+                <!-- Pulsante Torna al Calcolatore -->
+                <a href="/" class="flex flex-col items-center p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200" aria-label="Torna al Calcolatore">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m-6 4h6m-6 4h6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                    </svg>
+                    <span class="text-xs font-semibold">Calcolatore</span>
+                </a>
+                <button id="installAppBtn" class="hidden p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-opacity duration-300 ease-in-out" aria-label="Installa App">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                </button>
+                <button id="theme-switcher" class="cursor-pointer p-2 rounded-full transition-transform active:animate-pulse-subtle" aria-label="Cambia tema">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                </button>
+                <!-- Pulsante Hamburger Menu -->
+                <button id="menu-btn" class="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-label="Apri menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 lg:p-10">
+            <div class="mb-6">
+                <a href="/guides.html" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-2 text-sm">&larr; Torna a tutte le guide</a>
+            </div>
+
+            <article class="prose prose-lg dark:prose-invert max-w-none">                
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">Guida all'Hop-Up: Il Segreto di Gittata e Precisione</h1>
+                
+                <p class="lead">Se ti sei mai chiesto come faccia un piccolo pallino di plastica a volare dritto per decine di metri, la risposta è quasi sempre una: l'<strong>Hop-Up</strong>. Questo piccolo ma geniale meccanismo è il cuore della precisione di ogni replica da softair. Capirlo e regolarlo è fondamentale.</p>
+
+                <h2>Cos'è l'Hop-Up e Come Funziona?</h2>
+                <p>L'Hop-Up è un sistema che applica un <strong>backspin</strong> (rotazione all'indietro) al pallino (BB) prima che lasci la canna. Questa rotazione crea una differenza di pressione dell'aria attorno al pallino, basata sull'<strong>Effetto Magnus</strong>: l'aria che si muove più velocemente sopra il pallino ha una pressione minore rispetto all'aria più lenta che passa sotto. Questa differenza di pressione genera una forza verso l'alto (portanza) che contrasta la gravità, permettendo al pallino di mantenere una traiettoria più tesa e di raggiungere distanze maggiori.</p>
+                <p>Senza Hop-Up, il pallino inizierebbe a cadere non appena uscito dalla canna, limitando drasticamente la gittata utile.</p>
+
+                <h3>I Componenti Chiave</h3>
+                <ul>
+                    <li><strong>Gommino Hop-Up (Bucking):</strong> Un piccolo cilindro di gomma con una sporgenza interna. È il pezzo che entra fisicamente in contatto con il pallino.</li>
+                    <li><strong>Pressore (Nub):</strong> Un piccolo cilindro o una barretta che preme sul gommino dall'alto, facendolo sporgere all'interno della canna.</li>
+                    <li><strong>Gruppo Hop-Up:</strong> La camera che ospita canna, gommino e pressore, e che contiene il meccanismo di regolazione (solitamente una rotella o una levetta).</li>
+                </ul>
+
+                <hr class="my-8 border-gray-300 dark:border-gray-600">
+
+                <h2>Come Regolare l'Hop-Up Perfettamente</h2>
+                <p>La regolazione dell'Hop-Up è un processo di "tentativi ed errori" che va fatto sul campo, possibilmente in un'area senza vento e con buona visibilità. L'obiettivo è ottenere la traiettoria più lunga e tesa possibile.</p>
+                <ol>
+                    <li><strong>Inizia da zero:</strong> Gira la rotella di regolazione fino a disattivare completamente l'Hop-Up (nessuna pressione sul gommino). Spara un colpo: vedrai il pallino cadere rapidamente verso il basso.</li>
+                    <li><strong>Applica un po' di Hop-Up:</strong> Gira leggermente la rotella per applicare un po' di effetto. Spara di nuovo. Ora il pallino dovrebbe volare più dritto prima di cadere.</li>
+                    <li><strong>Aumenta gradualmente:</strong> Continua ad aumentare l'effetto Hop-Up a piccoli incrementi, sparando un colpo dopo ogni regolazione. Osserva attentamente la traiettoria.</li>
+                    <li><strong>Trova il punto ideale:</strong> Il settaggio perfetto è quello in cui il pallino vola dritto per la massima distanza possibile e solo alla fine della sua corsa inizia a cadere dolcemente.</li>
+                </ol>
+
+                <h3>Sintomi di una Regolazione Sbagliata</h3>
+                <ul>
+                    <li><strong>Poco Hop-Up:</strong> Il pallino ha una traiettoria "a campana", cade presto e non raggiunge la massima gittata.</li>
+                    <li><strong>Troppo Hop-Up:</strong> Il pallino, appena uscito dalla canna, impenna bruscamente verso l'alto per poi ricadere. Questo riduce la precisione e la gittata utile.</li>
+                    <li><strong>Hop-Up Storto:</strong> Se il gommino non è allineato perfettamente, il pallino virerà costantemente a destra o a sinistra. In questo caso, è necessario smontare e riallineare il gruppo canna/Hop-Up.</li>
+                </ul>
+
+                <blockquote>
+                    <p><strong>Consiglio Pro:</strong> La regolazione dell'Hop-Up va fatta con i pallini che usi abitualmente! Un Hop-Up regolato per BBs da 0.25g non funzionerà correttamente con BBs da 0.30g, e viceversa. Pallini più pesanti richiedono più effetto Hop-Up per essere stabilizzati.</p>
+                </blockquote>
+
+                <h2>Manutenzione e Upgrade</h2>
+                <p>Con il tempo, il gommino Hop-Up può usurarsi o indurirsi, perdendo efficacia. È un componente economico ma vitale, e la sua sostituzione può migliorare notevolmente le prestazioni di una replica. Esistono anche sistemi avanzati come <strong>Flat-Hop</strong> e <strong>R-Hop</strong> che, utilizzando pressori e gommini con una superficie di contatto più ampia, offrono una rotazione più costante e una precisione superiore, specialmente con pallini pesanti.</p>
+                <p>Padroneggiare la regolazione dell'Hop-Up è una delle abilità più importanti per un softgunner. Prendetevi il tempo per tararlo a dovere e la vostra replica vi ripagherà con tiri precisi e soddisfacenti.</p>
+
+            </article>
+
+            <hr class="my-8 border-gray-300 dark:border-gray-600">
+
+            <section>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Articoli Correlati</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="/guides/guida-introduttiva.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Capire i Joule</h4>
+                    </a>
+                    <a href="/guides/scegliere-pallini.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Scegliere il Pallino Giusto</h4>
+                    </a>
+                    <a href="/guides/regolare-ottica.html" class="related-article-card">
+                        <h4 class="font-semibold text-indigo-600 dark:text-indigo-400">Regolare l'Ottica</h4>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <div class="mt-8 text-center">
+            <a href="/" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-200">&larr; Torna al Calcolatore</a>
+        </div>
+        <footer class="w-full text-center py-2 lg:max-w-6xl lg:mx-auto mt-auto pt-8">
+            <div class="text-xs text-gray-500 dark:text-gray-400 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+                <span class="whitespace-nowrap">© 2025 Joule-Calc</span>
+                <span class="hidden sm:inline">·</span>
+                <a href="/guides.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    Guide
+                </a>
+                <a href="/glossary.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    Glossario
+                </a>
+                <a href="/privacy.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    Privacy
+                </a>
+                <a href="/about.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    Chi Siamo
+                </a>
+                <a href="/contact.html" class="inline-flex items-center gap-1 hover:underline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    Contatti
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="module" src="/src/theme-loader.js"></script>
+</body>
+</html>
