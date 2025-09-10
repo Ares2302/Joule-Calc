@@ -171,21 +171,6 @@ function initMainApp() {
             return;
         }
 
-        if (id === 'confirmYesBtn') {
-            vibrate(20);
-            nascondiModale(DOM.confirmationModal);
-            const action = getPendingAction();
-            if (action) action();
-            clearPendingAction();
-            return;
-        }
-        if (id === 'confirmNoBtn') {
-            vibrate();
-            nascondiModale(DOM.confirmationModal);
-            clearPendingAction();
-            return;
-        }
-
         if (id === 'menu-btn') {
             vibrate();
             toggleMenu(true);
@@ -495,7 +480,51 @@ function handleDeepLink() {
 }
 
 function handleLaunchParams() {
-    // Implementazione di handleLaunchParams
+    if ('launchQueue' in window) {
+        launchQueue.setConsumer(launchParams => {
+            if (!launchParams.targetURL) return;
+
+            const url = new URL(launchParams.targetURL);
+            const params = new URLSearchParams(url.search);
+            const tab = params.get('tab');
+
+            // Map tab names to their corresponding elements
+            const tabMap = {
+                'joule': { tab: DOM.tabJoule, panel: DOM.panelJoule },
+                'velocity': { tab: DOM.tabVelocity, panel: DOM.panelVelocity },
+                'compensation': { tab: DOM.tabCompensation, panel: DOM.panelCompensation },
+            };
+
+            // Switch to the correct tab
+            if (tab && tabMap[tab]) {
+                switchTab(tabMap[tab].tab, tabMap[tab].panel);
+            }
+
+            // Pre-fill fields for the Joule calculator
+            if (tab === 'joule') {
+                const peso = params.get('peso');
+                const velocita = params.get('velocita');
+                if (peso) DOM.pesoInput.value = peso;
+                if (velocita) DOM.velocitaInput.value = velocita;
+            }
+
+            // Pre-fill fields for the Velocity calculator
+            if (tab === 'velocity') {
+                const joule = params.get('joule');
+                const peso = params.get('peso');
+                if (joule) DOM.targetJouleInput.value = joule;
+                if (peso) DOM.reversePesoInput.value = peso;
+            }
+
+            // Pre-fill fields for the Compensation calculator
+            if (tab === 'compensation') {
+                const distance = params.get('distanza');
+                const drop = params.get('spostamento');
+                if (distance) DOM.moaDistanceInput.value = distance;
+                if (drop) DOM.moaDropInput.value = drop;
+            }
+        });
+    }
 }
 
 /**
