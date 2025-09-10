@@ -188,6 +188,7 @@ export default defineConfig({
         'regolare-ottica': resolve(__dirname, 'guides/regolare-ottica.html'),
         'guida-hop-up': resolve(__dirname, 'guides/guida-hop-up.html'),
         glossary: resolve(__dirname, 'glossary.html'),
+        'guida-cronografo': resolve(__dirname, 'guides/guida-cronografo.html'),
       },
       
     },
