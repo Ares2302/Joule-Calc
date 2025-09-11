@@ -150,6 +150,7 @@ export default defineConfig({
           /robots\.txt$/,
           /ads\.txt$/,
           /google.*\.html$/,
+          /sitemap\.xml$/,
         ],
         runtimeCaching: [
           {
