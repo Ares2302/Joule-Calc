@@ -147,7 +147,6 @@ export default defineConfig({
       ],
       workbox: {
         navigateFallbackDenylist: [
-          /sitemap\.xml$/,
           /robots\.txt$/,
           /ads\.txt$/,
           /google.*\.html$/,
