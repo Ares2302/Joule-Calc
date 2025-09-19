@@ -4,9 +4,9 @@
   "description": "Joule-Calc è un calcolatore di Joule con storico, calcolo inverso della velocità e compensazione ottica (MOA/MRAD).",
   "lang": "it",
   "dir": "ltr",
-  "start_url": "/Joule-Calc/",
-  "scope": "/Joule-Calc/",
-  "id": "/Joule-Calc/",
+  "start_url": ".",
+  "scope": ".",
+  "id": ".",
   "display": "standalone",
   "display_override": [
     "window-controls-overlay"
