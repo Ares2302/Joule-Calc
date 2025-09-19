@@ -40,7 +40,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "/ic_launcher_monochrome.png",
+      "src": "ic_launcher_monochrome.png",
       "sizes": "432x432",
       "type": "image/png",
       "purpose": "monochrome"
